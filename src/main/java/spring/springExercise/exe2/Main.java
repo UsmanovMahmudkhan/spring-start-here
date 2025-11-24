@@ -7,5 +7,6 @@ public class Main {
         var contex=new AnnotationConfigApplicationContext(Config.class);
         Student s= contex.getBean(Student.class);
         System.out.println(s.getName());
+        System.out.println(s.getAge());
     }
 }
