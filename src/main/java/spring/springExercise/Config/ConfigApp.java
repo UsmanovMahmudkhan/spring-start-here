@@ -10,7 +10,7 @@ import spring.springExercise.Bean.Parrot;
 public class ConfigApp {
 
     @Bean
-    Parrot parrot(){
+    public  Parrot parrot(){
         return new Parrot("kook");
     }
 
@@ -28,6 +28,11 @@ public class ConfigApp {
     @Bean
     public Integer age(){
         return 21;
+    }
+
+    @Bean(value = "secondParrot")
+    public Parrot parrot1(){
+        return new Parrot("seond koko");
     }
 
 

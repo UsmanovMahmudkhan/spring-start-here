@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         var spring_contex= new AnnotationConfigApplicationContext(ConfigApp.class);
 
-        var parrot= spring_contex.getBean(Parrot.class);
+        var parrot= spring_contex.getBean("parrot",Parrot.class);
 
         System.out.println(parrot.getName());
 
@@ -24,6 +24,9 @@ public class Main {
 
         var age=spring_contex.getBean(Integer.class);
         System.out.println(age);
+
+        var parrot2=spring_contex.getBean("secondParrot",Parrot.class);
+        System.out.println(parrot2.getName());
 
     }
 }
