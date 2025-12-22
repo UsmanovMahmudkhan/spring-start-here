@@ -3,6 +3,7 @@ package spring.springExercise.Main;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import spring.springExercise.Bean.Car;
 import spring.springExercise.Bean.Parrot;
+import spring.springExercise.Bean.ParrotComponent;
 import spring.springExercise.Config.ConfigApp;
 
 public class Main {
@@ -27,6 +28,9 @@ public class Main {
 
         var parrot2=spring_contex.getBean("secondParrot",Parrot.class);
         System.out.println(parrot2.getName());
+
+        var component=spring_contex.getBean(ParrotComponent.class);
+        System.out.println(component.getName());
 
     }
 }

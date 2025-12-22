@@ -2,11 +2,15 @@ package spring.springExercise.Config;
 
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 import spring.springExercise.Bean.Car;
 import spring.springExercise.Bean.Parrot;
+import spring.springExercise.Bean.ParrotComponent;
 
 @Configuration
+@ComponentScan(basePackages = "spring.springExercise")
 public class ConfigApp {
 
     @Bean
