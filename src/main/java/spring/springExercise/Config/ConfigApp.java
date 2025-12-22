@@ -1,0 +1,36 @@
+package spring.springExercise.Config;
+
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import spring.springExercise.Bean.Car;
+import spring.springExercise.Bean.Parrot;
+
+@Configuration
+public class ConfigApp {
+
+    @Bean
+    Parrot parrot(){
+        return new Parrot("kook");
+    }
+
+
+    @Bean
+    public Car car(){
+        return new Car("mers",22012);
+    }
+
+    @Bean
+    public String name(){
+        return "khan";
+    }
+
+    @Bean
+    public Integer age(){
+        return 21;
+    }
+
+
+
+
+}
