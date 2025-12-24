@@ -1,11 +1,11 @@
-package spring.springExercise.Main;
+package spring.springExercise.Playground.Main;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import spring.springExercise.Bean.Car;
-import spring.springExercise.Bean.Parrot;
-import spring.springExercise.Bean.ParrotComponent;
-import spring.springExercise.Bean.ParrotCustom;
-import spring.springExercise.Config.ConfigApp;
+import spring.springExercise.Playground.Bean.Car;
+import spring.springExercise.Playground.Bean.Parrot;
+import spring.springExercise.Playground.Bean.ParrotComponent;
+import spring.springExercise.Playground.Bean.ParrotCustom;
+import spring.springExercise.Playground.Config.ConfigApp;
 
 public class Main {
     public static void main(String[] args) {

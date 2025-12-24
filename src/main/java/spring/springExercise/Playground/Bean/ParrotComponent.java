@@ -1,4 +1,4 @@
-package spring.springExercise.Bean;
+package spring.springExercise.Playground.Bean;
 
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Component;

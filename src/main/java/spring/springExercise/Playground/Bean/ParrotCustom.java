@@ -1,11 +1,7 @@
-package spring.springExercise.Bean;
+package spring.springExercise.Playground.Bean;
 
-public class Parrot {
+public class ParrotCustom {
     String name;
-
-    public Parrot(String name) {
-        this.name = name;
-    }
 
     public String getName() {
         return name;

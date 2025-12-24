@@ -1,4 +1,4 @@
-package spring.springExercise.Bean;
+package spring.springExercise.Playground.Bean;
 
 
 public class Car {

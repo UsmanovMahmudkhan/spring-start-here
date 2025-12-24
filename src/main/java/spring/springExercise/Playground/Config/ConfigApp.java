@@ -1,13 +1,11 @@
-package spring.springExercise.Config;
+package spring.springExercise.Playground.Config;
 
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.stereotype.Component;
-import spring.springExercise.Bean.Car;
-import spring.springExercise.Bean.Parrot;
-import spring.springExercise.Bean.ParrotComponent;
+import spring.springExercise.Playground.Bean.Car;
+import spring.springExercise.Playground.Bean.Parrot;
 
 @Configuration
 @ComponentScan(basePackages = "spring.springExercise")
