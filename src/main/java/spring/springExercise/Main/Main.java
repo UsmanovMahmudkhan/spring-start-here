@@ -4,6 +4,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import spring.springExercise.Bean.Car;
 import spring.springExercise.Bean.Parrot;
 import spring.springExercise.Bean.ParrotComponent;
+import spring.springExercise.Bean.ParrotCustom;
 import spring.springExercise.Config.ConfigApp;
 
 public class Main {
@@ -31,6 +32,18 @@ public class Main {
 
         var component=spring_contex.getBean(ParrotComponent.class);
         System.out.println(component.getName());
+
+
+        spring_contex.registerBean("CustomParrot", ParrotCustom.class,()->
+        {
+            ParrotCustom p=new ParrotCustom();
+            p.setName("Custom Parrotttttttttt");
+            return p;
+        });
+
+        System.out.println(spring_contex.getBean("CustomParrot", ParrotCustom.class).getName());
+
+
 
     }
 }
