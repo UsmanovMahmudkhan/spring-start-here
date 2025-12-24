@@ -8,7 +8,7 @@ import spring.springExercise.Playground.Bean.Car;
 import spring.springExercise.Playground.Bean.Parrot;
 
 @Configuration
-@ComponentScan(basePackages = "spring.springExercise")
+@ComponentScan(basePackages = "spring.springExercise.Playground")
 public class ConfigApp {
 
     @Bean
