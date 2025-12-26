@@ -8,6 +8,13 @@ public class Parrot {
         return name;
     }
 
+    public Parrot(String name) {
+        this.name = name;
+    }
+
+    public Parrot() {
+    }
+
     public void setName(String name) {
         this.name = name;
     }
