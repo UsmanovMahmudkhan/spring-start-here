@@ -7,12 +7,9 @@ import spring.springExercise.SqExrs.Chapter4.PaymentSystem.v1.CreditCardPayment;
 @Service
 public class PaymentSerive {
     @Autowired
-    private CreditCard creditCard;
-    @Autowired
-    private PayPal payPal;
+    private PaymentMethod pay;
 
     public void process(){
-        creditCard.pay(12);
-        payPal.pay(20);
+        pay.pay(12);
     }
 }
