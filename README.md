@@ -705,7 +705,7 @@ Before submitting a PR, ensure:
 1. Maintainers will review your PR
 2. Address any feedback or requested changes
 3. Once approved, your PR will be merged
-4. Thank you for contributing! 🎉
+4. Thank you for contributing! 
 
 ---
 
@@ -827,6 +827,4 @@ This repository structure is inspired by progressive learning approaches, organi
 - Join Spring community forums
 
 ---
-
-**Happy Learning! 🚀**
 
