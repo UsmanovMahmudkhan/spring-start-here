@@ -10,7 +10,7 @@ public class HelloController {
 
     @RequestMapping("/home")
     public String getHome(){
-        return "home.html";
+        return "homes.html";
     }
 }
 
