@@ -1,11 +1,36 @@
+<div align="center">
+
 # Spring Exercise Repository
+
+```
+    ╔═══════════════════════════════════════════════════════╗
+    ║                                                       ║
+    ║     ____                    ____  __           __    ║
+    ║    / __/__  ___  ___  ___  / __ \/ /___  _____/ /    ║
+    ║   / /_/ _ \/ _ \/ _ \/ -_) / /_/ / / __ \/ ___/ __   ║
+    ║  / __/\___/_//_/\___/\__/ / .___/_/\___/\__/\__/    ║
+    ║ /_/                       /_/                        ║
+    ║                                                       ║
+    ║         Learning Spring Framework                    ║
+    ║                                                       ║
+    ╚═══════════════════════════════════════════════════════╝
+```
 
 **A comprehensive Spring Framework learning repository with hands-on exercises covering core concepts from bean configuration to advanced dependency injection patterns.**
 
-[![Java](https://img.shields.io/badge/Java-21-orange.svg)](https://www.oracle.com/java/)
-[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0.0-brightgreen.svg)](https://spring.io/projects/spring-boot)
-[![Maven](https://img.shields.io/badge/Maven-3.6+-blue.svg)](https://maven.apache.org/)
-[![License](https://img.shields.io/badge/License-BSL%201.0-blue.svg)](LICENSE)
+```
+From Beans to AOP → Progressive Learning Path
+```
+
+[![Java](https://img.shields.io/badge/Java-21-orange.svg?style=for-the-badge&logo=openjdk)](https://www.oracle.com/java/)
+[![Spring Boot](https://img.shields.io/badge/Spring%20Boot-4.0.0-brightgreen.svg?style=for-the-badge&logo=spring)](https://spring.io/projects/spring-boot)
+[![Maven](https://img.shields.io/badge/Maven-3.6+-blue.svg?style=for-the-badge&logo=apache-maven)](https://maven.apache.org/)
+[![License](https://img.shields.io/badge/License-BSL%201.0-blue.svg?style=for-the-badge)](LICENSE)
+
+[![GitHub stars](https://img.shields.io/github/stars/UsmanovMahmudkhan/spring-start-here.svg?style=social&label=Star)](https://github.com/UsmanovMahmudkhan/spring-start-here)
+[![GitHub forks](https://img.shields.io/github/forks/UsmanovMahmudkhan/spring-start-here.svg?style=social&label=Fork)](https://github.com/UsmanovMahmudkhan/spring-start-here)
+
+</div>
 
 ---
 
