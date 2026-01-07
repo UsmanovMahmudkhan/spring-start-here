@@ -37,6 +37,51 @@ From Beans to AOP → Progressive Learning Path
 [![GitHub stars](https://img.shields.io/github/stars/UsmanovMahmudkhan/spring-start-here.svg?style=social&label=Star)](https://github.com/UsmanovMahmudkhan/spring-start-here)
 [![GitHub forks](https://img.shields.io/github/forks/UsmanovMahmudkhan/spring-start-here.svg?style=social&label=Fork)](https://github.com/UsmanovMahmudkhan/spring-start-here)
 
+---
+
+### Repository Stats
+
+<div align="center">
+
+![GitHub repo size](https://img.shields.io/github/repo-size/UsmanovMahmudkhan/spring-start-here?style=flat-square&color=6DB33F)
+![GitHub language count](https://img.shields.io/github/languages/count/UsmanovMahmudkhan/spring-start-here?style=flat-square&color=6DB33F)
+![GitHub top language](https://img.shields.io/github/languages/top/UsmanovMahmudkhan/spring-start-here?style=flat-square&color=6DB33F)
+![GitHub last commit](https://img.shields.io/github/last-commit/UsmanovMahmudkhan/spring-start-here?style=flat-square&color=6DB33F)
+
+</div>
+
+---
+
+### What You'll Learn
+
+<div align="center">
+
+| Concept | Description | Chapter |
+|---------|-------------|---------|
+| **Bean Configuration** | Learn `@Bean`, `@Configuration`, and component scanning | Chapter 3 |
+| **Dependency Injection** | Master constructor, setter, and field injection | Chapter 3 |
+| **Bean Scopes** | Understand Singleton vs Prototype, Eager vs Lazy | Chapter 5 |
+| **Proxy Patterns** | Explore Spring's proxy mechanism | Chapter 4 |
+| **AOP** | Aspect-Oriented Programming with `@Aspect` | Chapter 6 |
+| **Service Layer** | Build services and repositories | Chapter 4 |
+
+</div>
+
+---
+
+### Quick Start
+
+<div align="center">
+
+```bash
+# Clone and run in 3 commands
+git clone https://github.com/UsmanovMahmudkhan/spring-start-here.git
+cd spring-start-here
+./mvnw exec:java -Dexec.mainClass="spring.springExercise.Playground.Main.Main"
+```
+
+</div>
+
 </div>
 
 ---
@@ -64,6 +109,20 @@ From Beans to AOP → Progressive Learning Path
 
 This repository serves as a comprehensive learning resource for Spring Framework fundamentals. It contains progressive exercises organized into three main sections: **Playground** (basic concepts), **Practice** (hands-on exercises), and **SqExrs** (structured chapter-based exercises).
 
+<div align="center">
+
+### Learning Journey
+
+```
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│  Playground │ -> │   Practice  │ -> │   Chapter   │ -> │   Chapter   │
+│   Basics    │    │  Exercises  │    │   3-5       │    │     6       │
+│             │    │             │    │  Advanced   │    │     AOP     │
+└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+```
+
+</div>
+
 ### What It Does
 
 - Demonstrates Spring Framework core concepts through practical, runnable examples
@@ -80,14 +139,20 @@ This repository serves as a comprehensive learning resource for Spring Framework
 
 ### Key Features
 
-- **Progressive Learning Path**: Exercises organized from basic to advanced concepts
-- **Multiple Implementations**: Different approaches to the same problem (v1, v2 patterns)
-- **Standalone Examples**: Each exercise can be run independently
-- **Real-World Patterns**: Payment systems, comment services, notification systems
-- **Bean Scope Demonstrations**: Singleton, Prototype, Eager, and Lazy instantiation
-- **Dependency Injection Examples**: Constructor, setter, and field injection
-- **Component Scanning**: Annotation-based and configuration-based approaches
-- **Aspect-Oriented Programming (AOP)**: `@Aspect`, `@Around`, `@Before`, `@After` annotations with practical examples
+<div align="center">
+
+| Feature | Description |
+|---------|-------------|
+| **Progressive Learning** | Step-by-step path from basics to advanced |
+| **Multiple Versions** | Compare v1 vs v2 implementations |
+| **Standalone Examples** | Each exercise runs independently |
+| **Real-World Patterns** | Payment, notification, and service patterns |
+| **Bean Scopes** | Singleton, Prototype, Eager, Lazy |
+| **Dependency Injection** | Constructor, setter, field injection |
+| **Component Scanning** | Annotation and configuration-based |
+| **AOP** | `@Aspect`, `@Around`, `@Before`, `@After` |
+
+</div>
 
 ---
 
