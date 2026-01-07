@@ -1,2 +1,43 @@
+# Auto detect text files and perform LF normalization
+* text=auto
+
+# Maven wrapper scripts
 /mvnw text eol=lf
+mvnw text eol=lf
 *.cmd text eol=crlf
+
+# Source files
+*.java text eol=lf
+*.xml text eol=lf
+*.properties text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.json text eol=lf
+*.md text eol=lf
+*.txt text eol=lf
+
+# Shell scripts
+*.sh text eol=lf
+
+# Batch files
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Binary files
+*.class binary
+*.jar binary
+*.war binary
+*.ear binary
+*.zip binary
+*.tar.gz binary
+*.rar binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.pdf binary
+
+# Exclude from export
+.gitattributes export-ignore
+.gitignore export-ignore
