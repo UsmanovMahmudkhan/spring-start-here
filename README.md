@@ -37,7 +37,7 @@ This repository serves as a comprehensive learning resource for Spring Framework
 - Demonstrates Spring Framework core concepts through practical, runnable examples
 - Provides progressive learning path from basic bean configuration to advanced patterns
 - Includes multiple implementations of the same concepts for comparison and learning
-- Covers dependency injection, component scanning, bean scopes, and proxy patterns
+- Covers dependency injection, component scanning, bean scopes, proxy patterns, and Aspect-Oriented Programming (AOP)
 
 ### Who It's For
 
@@ -55,6 +55,7 @@ This repository serves as a comprehensive learning resource for Spring Framework
 - **Bean Scope Demonstrations**: Singleton, Prototype, Eager, and Lazy instantiation
 - **Dependency Injection Examples**: Constructor, setter, and field injection
 - **Component Scanning**: Annotation-based and configuration-based approaches
+- **Aspect-Oriented Programming (AOP)**: `@Aspect`, `@Around`, `@Before`, `@After` annotations with practical examples
 
 ---
 
@@ -80,6 +81,7 @@ graph TB
         I[SqExrs Module] --> J[Chapter 3: Bean & DI]
         I --> K[Chapter 4: Services & Proxies]
         I --> L[Chapter 5: Bean Scopes]
+        I --> M[Chapter 6: AOP]
         
         J --> J1[Bean Configuration]
         J --> J2[Dependency Injection]
@@ -91,6 +93,9 @@ graph TB
         L --> L1[Singleton Scope]
         L --> L2[Prototype Scope]
         L --> L3[Eager/Lazy Instantiation]
+        
+        M --> M1[Aspects with @Around]
+        M --> M2[NO_Aspects Comparison]
     end
     
     style A fill:#e1f5ff
@@ -161,9 +166,10 @@ classDiagram
 | **Java** | 21 | Programming language |
 | **Spring Boot** | 4.0.0 | Application framework |
 | **Spring Context** | 6.2.7 | Dependency injection container |
+| **Spring AOP** | 7.0.1 | Aspect-oriented programming support |
+| **AspectJ Weaver** | 1.9.25 | AOP bytecode weaving |
 | **Maven** | 3.6+ | Build tool and dependency management |
 | **JUnit** | (via Spring Boot Starter Test) | Testing framework |
-| **javax.annotation-api** | 1.3.2 | Annotation support |
 
 ---
 
@@ -195,11 +201,14 @@ springExercise/
 │   │   │       │   ├── Service/                    # Service layer
 │   │   │       │   ├── Repository/                 # Repository layer
 │   │   │       │   └── Proxy/                      # Proxy pattern examples
-│   │   │       └── Chapter5/                       # Bean scopes
+│   │   │       ├── Chapter5/                       # Bean scopes
 │   │   │           ├── Singleton/                  # Singleton scope examples
 │   │   │           ├── Protorype/                  # Prototype scope examples
 │   │   │           ├── Eager_Instantiation/        # Eager loading examples
 │   │   │           └── Lazy_Instantiation/         # Lazy loading examples
+│   │   │       └── Chapter6/                       # Aspect-Oriented Programming (AOP)
+│   │   │           ├── Aspects/                    # AOP examples with @Aspect
+│   │   │           └── NO_Aspects/                 # Comparison without AOP
 │   │   └── resources/
 │   │       └── application.properties              # Spring Boot configuration
 │   └── test/
@@ -218,6 +227,7 @@ springExercise/
 - **SqExrs/Chapter3/**: Bean configuration methods and dependency injection patterns
 - **SqExrs/Chapter4/**: Real-world patterns including payment systems, comment services, and notification systems with multiple implementation versions
 - **SqExrs/Chapter5/**: Bean scope management (Singleton, Prototype) and instantiation strategies (Eager, Lazy)
+- **SqExrs/Chapter6/**: Aspect-Oriented Programming (AOP) with `@Aspect`, `@Around` annotations, and comparison examples
 
 ---
 
@@ -375,6 +385,21 @@ Each module contains standalone `Main.java` classes that can be executed indepen
 ./mvnw exec:java -Dexec.mainClass="spring.springExercise.SqExrs.Chapter5.Lazy_Instantiation.Main"
 ```
 
+**Chapter 6: Aspect-Oriented Programming (AOP)**
+```bash
+# AOP with @Aspect annotation
+./mvnw exec:java -Dexec.mainClass="spring.springExercise.SqExrs.Chapter6.Aspects.Main"
+
+# Comparison without AOP
+./mvnw exec:java -Dexec.mainClass="spring.springExercise.SqExrs.Chapter6.NO_Aspects.Main"
+```
+
+**What Chapter 6 demonstrates**:
+- Creating aspects with `@Aspect` and `@Component` annotations
+- Using `@Around` advice to intercept method execution
+- Enabling AOP with `@EnableAspectJAutoProxy`
+- Comparing behavior with and without AOP
+
 ### Running from IDE
 
 1. **Import the project** into your IDE (IntelliJ IDEA, Eclipse, etc.)
@@ -401,15 +426,42 @@ public class Main {
 Done payment5000
 ```
 
+### Example: AOP Aspect Execution
+
+```java
+// File: SqExrs/Chapter6/Aspects/Main.java
+public class Main {
+    public static void main(String[] args) {
+        var container = new AnnotationConfigApplicationContext(Config.class);
+        var service = container.getBean(CommentService.class);
+        Comment comment = new Comment("Hello");
+        service.publish(comment);
+    }
+}
+```
+
+**Expected Output** (with AOP enabled):
+```
+Before
+[Service execution]
+After finished
+```
+
+**Key Learning Points**:
+- `@EnableAspectJAutoProxy` enables AOP processing
+- `@Around` advice wraps method execution
+- Aspects are automatically applied to matching methods
+
 ### Feature Matrix
 
-| Module | Bean Config | DI | Component Scan | Scopes | Proxies | Services |
-|--------|------------|----|----------------|--------|---------|----------|
-| **Playground** | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
-| **Practice** | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
-| **Chapter 3** | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
-| **Chapter 4** | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
-| **Chapter 5** | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ |
+| Module | Bean Config | DI | Component Scan | Scopes | Proxies | Services | AOP |
+|--------|------------|----|----------------|--------|---------|----------|-----|
+| **Playground** | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Practice** | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Chapter 3** | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
+| **Chapter 4** | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ |
+| **Chapter 5** | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
+| **Chapter 6** | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
 
 ---
 
@@ -716,7 +768,7 @@ Based on the current repository structure, potential future enhancements:
 ### Short Term
 
 - [ ] Add comprehensive unit tests for each exercise
-- [ ] Create Chapter 6: AOP (Aspect-Oriented Programming)
+- [x] Create Chapter 6: AOP (Aspect-Oriented Programming) ✅
 - [ ] Add REST API examples with Spring Web
 - [ ] Include database integration examples (JPA/Hibernate)
 - [ ] Add Spring Security examples
