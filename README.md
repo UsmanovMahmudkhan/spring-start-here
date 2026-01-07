@@ -2,6 +2,11 @@
 
 # Spring Exercise Repository
 
+<img src="https://readme-typing-svg.herokuapp.com?font=Fira+Code&size=30&duration=2000&pause=1000&color=6DB33F&center=true&vCenter=true&width=600&lines=Learning+Spring+Framework;From+Beans+to+AOP;Progressive+Learning+Path" alt="Typing SVG" />
+
+<img src="https://capsule-render.vercel.app/api?type=waving&color=6DB33F&height=100&section=header&text=Spring%20Exercise&fontSize=42&fontColor=fff&animation=twinkling&fontAlignY=30" alt="Spring Banner" />
+
+
 ```
     ╔═══════════════════════════════════════════════════════╗
     ║                                                       ║
@@ -17,6 +22,8 @@
 ```
 
 **A comprehensive Spring Framework learning repository with hands-on exercises covering core concepts from bean configuration to advanced dependency injection patterns.**
+
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/spring/spring-original.svg" alt="spring" width="40" height="40"/> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg" alt="java" width="40" height="40"/> <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/maven/maven-original.svg" alt="maven" width="40" height="40"/>
 
 ```
 From Beans to AOP → Progressive Learning Path
