@@ -66,6 +66,7 @@ From Beans to AOP → Progressive Learning Path
 | **Service Layer** | Build services and repositories | Chapter 4 |
 | **Spring Boot Web** | REST controllers and web applications | Chapter 7 |
 | **Thymeleaf Templates** | Server-side templating with Spring MVC | Chapter 8 |
+| **HTTP Methods** | GET/POST handling with forms and services | Chapter 8 |
 
 </div>
 
@@ -155,6 +156,7 @@ This repository serves as a comprehensive learning resource for Spring Framework
 | **AOP** | `@Aspect`, `@Around`, `@Before`, `@After`, `@Order`, custom annotations |
 | **Spring Boot Web** | REST controllers, `@RestController`, `@GetMapping`, `@RequestMapping` |
 | **Thymeleaf** | Server-side templating, `@PathVariable`, `@RequestParam`, model attributes |
+| **HTTP Methods** | `@GetMapping`, `@PostMapping`, form handling, service integration |
 
 </div>
 
@@ -207,8 +209,13 @@ graph TB
         N --> N2[Spring Boot Application]
         
         O --> O1[Thymeleaf Templates]
-        O --> O2[Path Variables]
-        O --> O3[Request Parameters]
+        O --> O2[HTTP GET/POST Methods]
+        O --> O3[Path Variables]
+        O --> O4[Request Parameters]
+        
+        O2 --> O2A[Product Management]
+        O2 --> O2B[Service Layer]
+        O2 --> O2C[Form Handling]
     end
     
     style A fill:#e1f5ff
@@ -333,16 +340,26 @@ springExercise/
 │   │   │       └── Chapter8/                       # Thymeleaf Templates
 │   │   │           ├── Application.java            # Spring Boot application
 │   │   │           ├── Controller.java             # MVC controller with templates
+│   │   │           ├── Comment.java                # Comment model
+│   │   │           ├── HttpsMethods/               # HTTP GET/POST examples
+│   │   │           │   ├── Application.java        # Standalone Spring Boot app
+│   │   │           │   ├── Controller/             # Product controller (GET/POST)
+│   │   │           │   ├── Service/                # ProductService
+│   │   │           │   ├── Model/                  # Products model
+│   │   │           │   └── Configuration/           # Config class
 │   │   │           ├── PathVariable/               # Path variable examples
+│   │   │           │   ├── Application.java        # Standalone Spring Boot app
+│   │   │           │   └── Controller.java         # Path variable controller
 │   │   │           └── RequestParametr/            # Request parameter examples
+│   │   │               ├── Application.java        # Standalone Spring Boot app
+│   │   │               └── Controller.java         # Request parameter controller
 │   │   └── resources/
 │   │       ├── templates/                          # Thymeleaf templates
 │   │       │   ├── home.html                       # Home page template
 │   │       │   ├── main.html                       # Main page template
-│   │       │   ├── color.html                      # Color example template
-│   │       │   └── name.html                       # Name example template
-│   │       └── application.properties              # Spring Boot configuration
-│   │   └── resources/
+│   │       │   ├── color.html                      # Color example template (PathVariable)
+│   │       │   ├── name.html                       # Name example template (RequestParam)
+│   │       │   └── allproducts.html                # Products list template (HttpsMethods)
 │   │       └── application.properties              # Spring Boot configuration
 │   └── test/
 │       └── java/spring/springExercise/
@@ -362,7 +379,11 @@ springExercise/
 - **SqExrs/Chapter5/**: Bean scope management (Singleton, Prototype) and instantiation strategies (Eager, Lazy)
 - **SqExrs/Chapter6/**: Aspect-Oriented Programming (AOP) with `@Aspect`, `@Around` annotations, annotation-based interception, parameter modification, multiple aspects ordering, and comparison examples
 - **SqExrs/Chapter7/**: Spring Boot web applications with REST controllers (`@RestController`, `@GetMapping`)
-- **SqExrs/Chapter8/**: Thymeleaf server-side templating with Spring MVC, path variables (`@PathVariable`), and request parameters (`@RequestParam`)
+- **SqExrs/Chapter8/**: Thymeleaf server-side templating with Spring MVC, including:
+  - **Main Controller**: Basic Thymeleaf integration with model attributes
+  - **HttpsMethods**: Complete CRUD example with `@GetMapping` and `@PostMapping`, `ProductService`, and product management
+  - **PathVariable**: Path variable examples with `@PathVariable` annotation
+  - **RequestParametr**: Request parameter examples with `@RequestParam` (including optional parameters)
 
 ---
 
@@ -566,18 +587,58 @@ Each module contains standalone `Main.java` classes that can be executed indepen
 - Building RESTful web services
 
 **Chapter 8: Thymeleaf Templates**
+
+**Main Chapter 8 Application**:
 ```bash
-# Run Spring Boot web application with Thymeleaf
+# Run main Chapter 8 Spring Boot application
 ./mvnw exec:java -Dexec.mainClass="spring.springExercise.SqExrs.Chapter8.Application"
 
 # Or use Spring Boot Maven plugin
 ./mvnw spring-boot:run -Dspring-boot.run.main-class=spring.springExercise.SqExrs.Chapter8.Application
 
 # Access endpoints:
-# http://localhost:8080/home          # Thymeleaf template with model attributes
+# http://localhost:8080/home          # Thymeleaf template with model attributes (username, name)
 # http://localhost:8080/              # Main page with comment model
-# http://localhost:8080/{color}        # Path variable example (e.g., /red, /blue)
-# http://localhost:8080/?name=John&age=25  # Request parameter example
+```
+
+**Chapter 8: HttpsMethods (Product Management)**:
+```bash
+# Run HttpsMethods standalone application
+./mvnw exec:java -Dexec.mainClass="spring.springExercise.SqExrs.Chapter8.HttpsMethods.Application"
+
+# Or use Spring Boot Maven plugin
+./mvnw spring-boot:run -Dspring-boot.run.main-class=spring.springExercise.SqExrs.Chapter8.HttpsMethods.Application
+
+# Access endpoints:
+# http://localhost:8080/products       # GET: View all products (displays product list)
+# POST to http://localhost:8080/products  # POST: Add new product (form submission)
+```
+
+**Chapter 8: PathVariable**:
+```bash
+# Run PathVariable standalone application
+./mvnw exec:java -Dexec.mainClass="spring.springExercise.SqExrs.Chapter8.PathVariable.Application"
+
+# Or use Spring Boot Maven plugin
+./mvnw spring-boot:run -Dspring-boot.run.main-class=spring.springExercise.SqExrs.Chapter8.PathVariable.Application
+
+# Access endpoints:
+# http://localhost:8080/red            # Path variable example (color: red)
+# http://localhost:8080/blue           # Path variable example (color: blue)
+# http://localhost:8080/{anyColor}      # Any color value
+```
+
+**Chapter 8: RequestParametr**:
+```bash
+# Run RequestParametr standalone application
+./mvnw exec:java -Dexec.mainClass="spring.springExercise.SqExrs.Chapter8.RequestParametr.Application"
+
+# Or use Spring Boot Maven plugin
+./mvnw spring-boot:run -Dspring-boot.run.main-class=spring.springExercise.SqExrs.Chapter8.RequestParametr.Application
+
+# Access endpoints:
+# http://localhost:8080/?name=John&age=25     # Request parameter example (name required, age optional)
+# http://localhost:8080/?name=Jane            # Request parameter example (age is optional)
 ```
 
 **What Chapter 8 demonstrates**:
@@ -585,8 +646,12 @@ Each module contains standalone `Main.java` classes that can be executed indepen
 - Spring MVC controllers with `@Controller`
 - Passing data to templates using `Model` and `Model.addAttribute()`
 - Path variables with `@PathVariable` annotation
-- Request parameters with `@RequestParam` annotation
-- Thymeleaf expression syntax (`th:text`, `th:style`)
+- Request parameters with `@RequestParam` annotation (including optional parameters)
+- HTTP GET and POST methods with `@GetMapping` and `@PostMapping`
+- Service layer integration (`@Service`, `@Autowired`)
+- Thymeleaf expression syntax (`th:text`, `th:style`, `th:each`)
+- Form handling with Thymeleaf templates
+- Product management CRUD operations
 
 ### Running from IDE
 
@@ -740,6 +805,96 @@ public class Controller {
 - Use `Model` to pass data to templates
 - Thymeleaf expressions (`th:text`) render dynamic content
 
+### Example: HTTP GET/POST with Product Management
+
+```java
+// File: SqExrs/Chapter8/HttpsMethods/Controller/Controller.java
+@Controller
+public class Controller {
+    @Autowired
+    public ProductService service;
+
+    @GetMapping("/products")
+    public String getAll(Model model){
+        model.addAttribute("products", service.getAll());
+        return "allproducts.html";
+    }
+
+    @PostMapping("/products")
+    public String add(@RequestParam String name, @RequestParam Integer price, Model model){
+        var product = new Products(name, price);
+        service.add(product);
+        model.addAttribute("products", service.getAll());
+        return "allproducts.html";
+    }
+}
+```
+
+**Template** (`templates/allproducts.html`):
+```html
+<table>
+  <tr th:each="p: ${products}">
+    <td th:text="${p.name}"></td>
+    <td th:text="${p.price}"></td>
+  </tr>
+</table>
+<form action="/products" method="post">
+  Name: <input type="text" name="name">
+  Price: <input type="number" name="price">
+  <button type="submit">Add product</button>
+</form>
+```
+
+**Key Learning Points**:
+- `@GetMapping` handles HTTP GET requests
+- `@PostMapping` handles HTTP POST requests
+- `@RequestParam` binds form parameters to method arguments
+- `@Service` creates singleton service beans
+- `@Autowired` injects dependencies
+- Thymeleaf `th:each` iterates over collections
+- Form submission posts data to the same endpoint
+
+### Example: Path Variable
+
+```java
+// File: SqExrs/Chapter8/PathVariable/Controller.java
+@Controller
+public class Controller {
+    @RequestMapping("/{color}")
+    public String getColors(Model model, @PathVariable String color){
+        model.addAttribute("colors", "color:" + color);
+        return "color.html";
+    }
+}
+```
+
+**Key Learning Points**:
+- `@PathVariable` extracts values from URL path
+- Path variables are defined in `@RequestMapping` with `{variableName}`
+- Template receives the model attribute for rendering
+
+### Example: Request Parameter (Optional)
+
+```java
+// File: SqExrs/Chapter8/RequestParametr/Controller.java
+@Controller
+public class Controller {
+    @RequestMapping("/")
+    public String getName(Model model, 
+                         @RequestParam String name, 
+                         @RequestParam(required = false) Integer age){
+        model.addAttribute("name", name);
+        model.addAttribute("age", age);
+        return "name.html";
+    }
+}
+```
+
+**Key Learning Points**:
+- `@RequestParam` binds query parameters to method arguments
+- `required = false` makes parameters optional
+- Query string format: `?name=John&age=25`
+
 ### Feature Matrix
 
 | Module | Bean Config | DI | Component Scan | Scopes | Proxies | Services | AOP | Web/REST | Templates |
@@ -751,7 +906,7 @@ public class Controller {
 | **Chapter 5** | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
 | **Chapter 6** | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ |
 | **Chapter 7** | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ |
-| **Chapter 8** | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ |
+| **Chapter 8** | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ❌ | ✅ | ✅ |
 
 ---
 
