@@ -9,7 +9,7 @@ public class Controller {
 
     @RequestMapping("/{color}")
     public String getColors(Model model, @PathVariable String color){
-        model.addAttribute("colors","color:"+color);
+        model.addAttribute("colors","color:"+ color);
         return "color.html";
     }
 }
