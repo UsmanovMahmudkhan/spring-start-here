@@ -12,4 +12,10 @@ public class Controller {
         model.addAttribute("name","Mahmudkhhon");
         return "home";
     }
+
+    @RequestMapping("/")
+    public String getMain(Model model){
+        model.addAttribute("msg",new Comment("Hello Mahmudkhon").getText());
+        return "main.html";
+    }
 }
