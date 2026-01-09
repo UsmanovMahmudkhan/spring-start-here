@@ -1,7 +1,7 @@
-package spring.springExercise.SqExrs.Chapter8.HttpsMethods.Service;
+package spring.springExercise.SqExrs.Chapter8.HttpMethod.HttpsMethods.Service;
 
 import org.springframework.stereotype.Service;
-import spring.springExercise.SqExrs.Chapter8.HttpsMethods.Model.Products;
+import spring.springExercise.SqExrs.Chapter8.HttpMethod.HttpsMethods.Model.Products;
 
 import java.util.ArrayList;
 import java.util.List;

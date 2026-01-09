@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User and Comment</title>
+</head>
+<body>
+
+<table>
+  <caption>User</caption>
+  <th>Name</th>
+  <th>Age</th>
+  <tr th:each="u:${user}">
+    <td th:text="${u.name}"></td>
+    <td th:text="${u.age}"></td>
+    <td th:text="${u.comment.getText()}"></td>
+  </tr>
+</table>
+
+<form action="/" method="post">
+  Name: <label> <input type="text" name="name" ></label>
+  Age: <label> <input type="number" name="age"></label>
+  Comment:<label> <input type="text" name="text"> </label>
+  <label><input type="submit" value="click"></label>
+</form>
+</body>
+</html>

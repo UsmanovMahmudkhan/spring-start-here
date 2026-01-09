@@ -1,12 +1,12 @@
-package spring.springExercise.SqExrs.Chapter8.HttpsMethods.Controller;
+package spring.springExercise.SqExrs.Chapter8.HttpMethod.HttpsMethods.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import spring.springExercise.SqExrs.Chapter8.HttpsMethods.Model.Products;
-import spring.springExercise.SqExrs.Chapter8.HttpsMethods.Service.ProductService;
+import spring.springExercise.SqExrs.Chapter8.HttpMethod.HttpsMethods.Model.Products;
+import spring.springExercise.SqExrs.Chapter8.HttpMethod.HttpsMethods.Service.ProductService;
 
 @org.springframework.stereotype.Controller
 public class Controller {

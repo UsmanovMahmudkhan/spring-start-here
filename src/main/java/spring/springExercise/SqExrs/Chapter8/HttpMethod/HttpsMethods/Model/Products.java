@@ -1,4 +1,4 @@
-package spring.springExercise.SqExrs.Chapter8.HttpsMethods.Model;
+package spring.springExercise.SqExrs.Chapter8.HttpMethod.HttpsMethods.Model;
 
 
 public class Products {

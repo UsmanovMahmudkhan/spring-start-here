@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.com">
+<head>
+    <meta charset="UTF-8">
+    <title>User</title>
+</head>
+<body>
+<h1>
+  Name:<span th:text="${user.name}"></span>
+</h1>
+<p> Age: <span th:text="${user.age}"></span></p>
+<p> Comment: <span th:text="${user.comment.getText()}"></span></p>
+</body>
+</html>
