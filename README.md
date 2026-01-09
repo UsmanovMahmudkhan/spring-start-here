@@ -64,6 +64,8 @@ From Beans to AOP → Progressive Learning Path
 | **Proxy Patterns** | Explore Spring's proxy mechanism | Chapter 4 |
 | **AOP** | Aspect-Oriented Programming with `@Aspect` | Chapter 6 |
 | **Service Layer** | Build services and repositories | Chapter 4 |
+| **Spring Boot Web** | REST controllers and web applications | Chapter 7 |
+| **Thymeleaf Templates** | Server-side templating with Spring MVC | Chapter 8 |
 
 </div>
 
@@ -114,11 +116,11 @@ This repository serves as a comprehensive learning resource for Spring Framework
 ### Learning Journey
 
 ```
-┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
-│  Playground │ -> │   Practice  │ -> │   Chapter   │ -> │   Chapter   │
-│   Basics    │    │  Exercises  │    │   3-5       │    │     6       │
-│             │    │             │    │  Advanced   │    │     AOP     │
-└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
+┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐
+│  Playground │ -> │   Practice  │ -> │   Chapter   │ -> │   Chapter   │ -> │   Chapter   │
+│   Basics    │    │  Exercises  │    │   3-5       │    │     6       │    │    7-8      │
+│             │    │             │    │  Advanced   │    │     AOP     │    │    Web      │
+└─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘    └─────────────┘
 ```
 
 </div>
@@ -128,7 +130,7 @@ This repository serves as a comprehensive learning resource for Spring Framework
 - Demonstrates Spring Framework core concepts through practical, runnable examples
 - Provides progressive learning path from basic bean configuration to advanced patterns
 - Includes multiple implementations of the same concepts for comparison and learning
-- Covers dependency injection, component scanning, bean scopes, proxy patterns, and Aspect-Oriented Programming (AOP)
+- Covers dependency injection, component scanning, bean scopes, proxy patterns, Aspect-Oriented Programming (AOP), Spring Boot web applications, and Thymeleaf templating
 
 ### Who It's For
 
@@ -150,7 +152,9 @@ This repository serves as a comprehensive learning resource for Spring Framework
 | **Bean Scopes** | Singleton, Prototype, Eager, Lazy |
 | **Dependency Injection** | Constructor, setter, field injection |
 | **Component Scanning** | Annotation and configuration-based |
-| **AOP** | `@Aspect`, `@Around`, `@Before`, `@After` |
+| **AOP** | `@Aspect`, `@Around`, `@Before`, `@After`, `@Order`, custom annotations |
+| **Spring Boot Web** | REST controllers, `@RestController`, `@GetMapping`, `@RequestMapping` |
+| **Thymeleaf** | Server-side templating, `@PathVariable`, `@RequestParam`, model attributes |
 
 </div>
 
@@ -179,6 +183,8 @@ graph TB
         I --> K[Chapter 4: Services & Proxies]
         I --> L[Chapter 5: Bean Scopes]
         I --> M[Chapter 6: AOP]
+        I --> N[Chapter 7: Spring Boot Web]
+        I --> O[Chapter 8: Thymeleaf]
         
         J --> J1[Bean Configuration]
         J --> J2[Dependency Injection]
@@ -192,7 +198,17 @@ graph TB
         L --> L3[Eager/Lazy Instantiation]
         
         M --> M1[Aspects with @Around]
-        M --> M2[NO_Aspects Comparison]
+        M --> M2[Annotation Interception]
+        M --> M3[Parameter Modification]
+        M --> M4[Multiple Aspects]
+        M --> M5[NO_Aspects Comparison]
+        
+        N --> N1[REST Controllers]
+        N --> N2[Spring Boot Application]
+        
+        O --> O1[Thymeleaf Templates]
+        O --> O2[Path Variables]
+        O --> O3[Request Parameters]
     end
     
     style A fill:#e1f5ff
@@ -265,6 +281,8 @@ classDiagram
 | **Spring Context** | 6.2.7 | Dependency injection container |
 | **Spring AOP** | 7.0.1 | Aspect-oriented programming support |
 | **AspectJ Weaver** | 1.9.25 | AOP bytecode weaving |
+| **Spring Web** | (via Spring Boot Starter Web) | Web MVC framework |
+| **Thymeleaf** | (via Spring Boot Starter Thymeleaf) | Server-side templating engine |
 | **Maven** | 3.6+ | Build tool and dependency management |
 | **JUnit** | (via Spring Boot Starter Test) | Testing framework |
 
@@ -303,9 +321,27 @@ springExercise/
 │   │   │           ├── Protorype/                  # Prototype scope examples
 │   │   │           ├── Eager_Instantiation/        # Eager loading examples
 │   │   │           └── Lazy_Instantiation/         # Lazy loading examples
-│   │   │       └── Chapter6/                       # Aspect-Oriented Programming (AOP)
+│   │   │       ├── Chapter6/                       # Aspect-Oriented Programming (AOP)
 │   │   │           ├── Aspects/                    # AOP examples with @Aspect
+│   │   │           ├── AnnotationInterceptedMethods/  # AOP with custom annotations
+│   │   │           ├── InterceptedMethodParameter/     # Modifying method parameters
+│   │   │           ├── TwoAspectsInOneMethod/          # Multiple aspects ordering
 │   │   │           └── NO_Aspects/                 # Comparison without AOP
+│   │   │       ├── Chapter7/                       # Spring Boot Web (REST)
+│   │   │           ├── Application.java            # Spring Boot application
+│   │   │           └── HelloController.java        # REST controller example
+│   │   │       └── Chapter8/                       # Thymeleaf Templates
+│   │   │           ├── Application.java            # Spring Boot application
+│   │   │           ├── Controller.java             # MVC controller with templates
+│   │   │           ├── PathVariable/               # Path variable examples
+│   │   │           └── RequestParametr/            # Request parameter examples
+│   │   └── resources/
+│   │       ├── templates/                          # Thymeleaf templates
+│   │       │   ├── home.html                       # Home page template
+│   │       │   ├── main.html                       # Main page template
+│   │       │   ├── color.html                      # Color example template
+│   │       │   └── name.html                       # Name example template
+│   │       └── application.properties              # Spring Boot configuration
 │   │   └── resources/
 │   │       └── application.properties              # Spring Boot configuration
 │   └── test/
@@ -324,7 +360,9 @@ springExercise/
 - **SqExrs/Chapter3/**: Bean configuration methods and dependency injection patterns
 - **SqExrs/Chapter4/**: Real-world patterns including payment systems, comment services, and notification systems with multiple implementation versions
 - **SqExrs/Chapter5/**: Bean scope management (Singleton, Prototype) and instantiation strategies (Eager, Lazy)
-- **SqExrs/Chapter6/**: Aspect-Oriented Programming (AOP) with `@Aspect`, `@Around` annotations, and comparison examples
+- **SqExrs/Chapter6/**: Aspect-Oriented Programming (AOP) with `@Aspect`, `@Around` annotations, annotation-based interception, parameter modification, multiple aspects ordering, and comparison examples
+- **SqExrs/Chapter7/**: Spring Boot web applications with REST controllers (`@RestController`, `@GetMapping`)
+- **SqExrs/Chapter8/**: Thymeleaf server-side templating with Spring MVC, path variables (`@PathVariable`), and request parameters (`@RequestParam`)
 
 ---
 
@@ -487,6 +525,15 @@ Each module contains standalone `Main.java` classes that can be executed indepen
 # AOP with @Aspect annotation
 ./mvnw exec:java -Dexec.mainClass="spring.springExercise.SqExrs.Chapter6.Aspects.Main"
 
+# AOP with custom annotation interception
+./mvnw exec:java -Dexec.mainClass="spring.springExercise.SqExrs.Chapter6.AnnotationInterceptedMethods.Main"
+
+# AOP with parameter modification
+./mvnw exec:java -Dexec.mainClass="spring.springExercise.SqExrs.Chapter6.InterceptedMethodParameter.Main"
+
+# Multiple aspects on one method (ordering)
+./mvnw exec:java -Dexec.mainClass="spring.springExercise.SqExrs.Chapter6.TwoAspectsInOneMethod.Main"
+
 # Comparison without AOP
 ./mvnw exec:java -Dexec.mainClass="spring.springExercise.SqExrs.Chapter6.NO_Aspects.Main"
 ```
@@ -495,7 +542,51 @@ Each module contains standalone `Main.java` classes that can be executed indepen
 - Creating aspects with `@Aspect` and `@Component` annotations
 - Using `@Around` advice to intercept method execution
 - Enabling AOP with `@EnableAspectJAutoProxy`
+- Intercepting methods using custom annotations (`@MyLog`)
+- Modifying method parameters before execution
+- Ordering multiple aspects with `@Order` annotation
 - Comparing behavior with and without AOP
+
+**Chapter 7: Spring Boot Web (REST)**
+```bash
+# Run Spring Boot web application
+./mvnw exec:java -Dexec.mainClass="spring.springExercise.SqExrs.Chapter7.Application"
+
+# Or use Spring Boot Maven plugin
+./mvnw spring-boot:run -Dspring-boot.run.main-class=spring.springExercise.SqExrs.Chapter7.Application
+
+# Access endpoints:
+# http://localhost:8080/home
+```
+
+**What Chapter 7 demonstrates**:
+- Spring Boot web application setup
+- REST controllers with `@RestController` and `@Controller`
+- Request mapping with `@RequestMapping` and `@GetMapping`
+- Building RESTful web services
+
+**Chapter 8: Thymeleaf Templates**
+```bash
+# Run Spring Boot web application with Thymeleaf
+./mvnw exec:java -Dexec.mainClass="spring.springExercise.SqExrs.Chapter8.Application"
+
+# Or use Spring Boot Maven plugin
+./mvnw spring-boot:run -Dspring-boot.run.main-class=spring.springExercise.SqExrs.Chapter8.Application
+
+# Access endpoints:
+# http://localhost:8080/home          # Thymeleaf template with model attributes
+# http://localhost:8080/              # Main page with comment model
+# http://localhost:8080/{color}        # Path variable example (e.g., /red, /blue)
+# http://localhost:8080/?name=John&age=25  # Request parameter example
+```
+
+**What Chapter 8 demonstrates**:
+- Thymeleaf server-side templating integration
+- Spring MVC controllers with `@Controller`
+- Passing data to templates using `Model` and `Model.addAttribute()`
+- Path variables with `@PathVariable` annotation
+- Request parameters with `@RequestParam` annotation
+- Thymeleaf expression syntax (`th:text`, `th:style`)
 
 ### Running from IDE
 
@@ -549,16 +640,118 @@ After finished
 - `@Around` advice wraps method execution
 - Aspects are automatically applied to matching methods
 
+### Example: AOP with Custom Annotation
+
+```java
+// File: SqExrs/Chapter6/AnnotationInterceptedMethods/Main.java
+public class Main {
+    public static void main(String[] args) {
+        var container = new AnnotationConfigApplicationContext(Config.class);
+        var service = container.getBean(Services.class);
+        service.delete(new Comment("Helloooo"));
+    }
+}
+```
+
+**Key Learning Points**:
+- Intercept methods using custom annotations (`@MyLog`)
+- Pointcut expressions can target annotation-based methods
+- Selective interception based on annotations
+
+### Example: AOP Parameter Modification
+
+```java
+// File: SqExrs/Chapter6/InterceptedMethodParameter/Main.java
+public class Main {
+    public static void main(String[] args) {
+        var container = new AnnotationConfigApplicationContext(Config.class);
+        var service = container.getBean(Service.class);
+        Comment comment = new Comment("Hello");
+        String value = service.publish(comment);
+    }
+}
+```
+
+**Key Learning Points**:
+- Modify method parameters before execution using `joinPoint.proceed(modifiedArgs)`
+- Intercept and transform arguments dynamically
+- Return value modification is also possible
+
+### Example: Multiple Aspects Ordering
+
+```java
+// File: SqExrs/Chapter6/TwoAspectsInOneMethod/Main.java
+public class Main {
+    public static void main(String[] args) {
+        var container = new AnnotationConfigApplicationContext(Config.class);
+        var service = container.getBean(CommentService.class);
+        service.publish(new Comment("HI AOP"));
+    }
+}
+```
+
+**Key Learning Points**:
+- Multiple aspects can intercept the same method
+- Use `@Order` annotation to control execution order
+- Lower `@Order` values execute first (outermost)
+
+### Example: Spring Boot Web Application
+
+```java
+// File: SqExrs/Chapter7/HelloController.java
+@Controller
+public class HelloController {
+    @RequestMapping("/home")
+    public String getHome(){
+        return "homes.html";
+    }
+}
+```
+
+**Key Learning Points**:
+- Spring Boot automatically configures embedded Tomcat server
+- Controllers handle HTTP requests and return responses
+- Default port is 8080
+
+### Example: Thymeleaf Template with Model
+
+```java
+// File: SqExrs/Chapter8/Controller.java
+@Controller
+public class Controller {
+    @RequestMapping("/home")
+    public String getHome(Model model){
+        model.addAttribute("username","Usmonov");
+        model.addAttribute("name","Mahmudkhhon");
+        return "home";
+    }
+}
+```
+
+**Template** (`templates/home.html`):
+```html
+<h1>
+  Welcome <span th:text="${username} + ' ' + ${name}"></span> to Thymeleaf world
+</h1>
+```
+
+**Key Learning Points**:
+- Thymeleaf templates are located in `src/main/resources/templates/`
+- Use `Model` to pass data to templates
+- Thymeleaf expressions (`th:text`) render dynamic content
+
 ### Feature Matrix
 
-| Module | Bean Config | DI | Component Scan | Scopes | Proxies | Services | AOP |
-|--------|------------|----|----------------|--------|---------|----------|-----|
-| **Playground** | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| **Practice** | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| **Chapter 3** | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ |
-| **Chapter 4** | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ |
-| **Chapter 5** | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ |
-| **Chapter 6** | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ |
+| Module | Bean Config | DI | Component Scan | Scopes | Proxies | Services | AOP | Web/REST | Templates |
+|--------|------------|----|----------------|--------|---------|----------|-----|-----------|-----------|
+| **Playground** | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Practice** | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Chapter 3** | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Chapter 4** | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ | ❌ |
+| **Chapter 5** | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ❌ | ❌ |
+| **Chapter 6** | ✅ | ✅ | ✅ | ✅ | ❌ | ✅ | ✅ | ❌ | ❌ |
+| **Chapter 7** | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ❌ |
+| **Chapter 8** | ✅ | ✅ | ✅ | ✅ | ❌ | ❌ | ❌ | ✅ | ✅ |
 
 ---
 
@@ -866,7 +1059,8 @@ Based on the current repository structure, potential future enhancements:
 
 - [ ] Add comprehensive unit tests for each exercise
 - [x] Create Chapter 6: AOP (Aspect-Oriented Programming) ✅
-- [ ] Add REST API examples with Spring Web
+- [x] Add REST API examples with Spring Web (Chapter 7) ✅
+- [x] Add Thymeleaf templating examples (Chapter 8) ✅
 - [ ] Include database integration examples (JPA/Hibernate)
 - [ ] Add Spring Security examples
 
