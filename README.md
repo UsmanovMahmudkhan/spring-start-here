@@ -244,20 +244,3 @@ springExercise/
 └── LICENSE                                         # Boost Software License 1.0
 ```
 
-### Key Folders Explained
-
-- **Playground/**: Introduction to Spring concepts with simple, isolated examples
-- **Practice/**: Hands-on exercises to reinforce learning (Ex1, Ex2, Ex3)
-- **SqExrs/Chapter3/**: Bean configuration methods and dependency injection patterns
-- **SqExrs/Chapter4/**: Real-world patterns including payment systems, comment services, and notification systems with multiple implementation versions
-- **SqExrs/Chapter5/**: Bean scope management (Singleton, Prototype) and instantiation strategies (Eager, Lazy)
-- **SqExrs/Chapter6/**: Aspect-Oriented Programming (AOP) with `@Aspect`, `@Around` annotations, annotation-based interception, parameter modification, multiple aspects ordering, and comparison examples
-- **SqExrs/Chapter7/**: Spring Boot web applications with REST controllers (`@RestController`, `@GetMapping`)
-- **SqExrs/Chapter8/**: Thymeleaf server-side templating with Spring MVC, including:
-  - **Main Controller**: Basic Thymeleaf integration with model attributes
-  - **HttpMethod/HttpsMethods**: Complete CRUD example with `@GetMapping` and `@PostMapping`, `ProductService`, and product management
-  - **HttpMethod/HttpsMethods2**: User and Comment management system with `UserService`, nested model access (`user.comment.text`), and path variable lookup
-  - **PathVariable**: Path variable examples with `@PathVariable` annotation
-  - **RequestParametr**: Request parameter examples with `@RequestParam` (including optional parameters)
-
----
