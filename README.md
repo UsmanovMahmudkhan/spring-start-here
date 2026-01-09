@@ -214,8 +214,9 @@ graph TB
         O --> O4[Request Parameters]
         
         O2 --> O2A[Product Management]
-        O2 --> O2B[Service Layer]
-        O2 --> O2C[Form Handling]
+        O2 --> O2B[User & Comment Management]
+        O2 --> O2C[Service Layer]
+        O2 --> O2D[Form Handling]
     end
     
     style A fill:#e1f5ff
@@ -341,12 +342,19 @@ springExercise/
 │   │   │           ├── Application.java            # Spring Boot application
 │   │   │           ├── Controller.java             # MVC controller with templates
 │   │   │           ├── Comment.java                # Comment model
-│   │   │           ├── HttpsMethods/               # HTTP GET/POST examples
-│   │   │           │   ├── Application.java        # Standalone Spring Boot app
-│   │   │           │   ├── Controller/             # Product controller (GET/POST)
-│   │   │           │   ├── Service/                # ProductService
-│   │   │           │   ├── Model/                  # Products model
-│   │   │           │   └── Configuration/           # Config class
+│   │   │           ├── HttpMethod/                 # HTTP method examples
+│   │   │           │   ├── HttpsMethods/            # Product management (GET/POST)
+│   │   │           │   │   ├── Application.java    # Standalone Spring Boot app
+│   │   │           │   │   ├── Controller/         # Product controller
+│   │   │           │   │   ├── Service/            # ProductService
+│   │   │           │   │   ├── Model/              # Products model
+│   │   │           │   │   └── Configuration/      # Config class
+│   │   │           │   └── HttpsMethods2/          # User & Comment management
+│   │   │           │       ├── Application.java    # Standalone Spring Boot app
+│   │   │           │       ├── Controller/         # User/Comment controller
+│   │   │           │       ├── Service/            # UserService
+│   │   │           │       ├── Model/              # User, Comment models
+│   │   │           │       └── Configuration/      # Config class
 │   │   │           ├── PathVariable/               # Path variable examples
 │   │   │           │   ├── Application.java        # Standalone Spring Boot app
 │   │   │           │   └── Controller.java         # Path variable controller
@@ -359,7 +367,9 @@ springExercise/
 │   │       │   ├── main.html                       # Main page template
 │   │       │   ├── color.html                      # Color example template (PathVariable)
 │   │       │   ├── name.html                       # Name example template (RequestParam)
-│   │       │   └── allproducts.html                # Products list template (HttpsMethods)
+│   │       │   ├── names.html                      # User name template (HttpsMethods2)
+│   │       │   ├── allproducts.html                # Products list template (HttpsMethods)
+│   │       │   └── userComment.html                # User & Comment template (HttpsMethods2)
 │   │       └── application.properties              # Spring Boot configuration
 │   └── test/
 │       └── java/spring/springExercise/
@@ -381,7 +391,8 @@ springExercise/
 - **SqExrs/Chapter7/**: Spring Boot web applications with REST controllers (`@RestController`, `@GetMapping`)
 - **SqExrs/Chapter8/**: Thymeleaf server-side templating with Spring MVC, including:
   - **Main Controller**: Basic Thymeleaf integration with model attributes
-  - **HttpsMethods**: Complete CRUD example with `@GetMapping` and `@PostMapping`, `ProductService`, and product management
+  - **HttpMethod/HttpsMethods**: Complete CRUD example with `@GetMapping` and `@PostMapping`, `ProductService`, and product management
+  - **HttpMethod/HttpsMethods2**: User and Comment management system with `UserService`, nested model access (`user.comment.text`), and path variable lookup
   - **PathVariable**: Path variable examples with `@PathVariable` annotation
   - **RequestParametr**: Request parameter examples with `@RequestParam` (including optional parameters)
 
@@ -604,14 +615,28 @@ Each module contains standalone `Main.java` classes that can be executed indepen
 **Chapter 8: HttpsMethods (Product Management)**:
 ```bash
 # Run HttpsMethods standalone application
-./mvnw exec:java -Dexec.mainClass="spring.springExercise.SqExrs.Chapter8.HttpsMethods.Application"
+./mvnw exec:java -Dexec.mainClass="spring.springExercise.SqExrs.Chapter8.HttpMethod.HttpsMethods.Application"
 
 # Or use Spring Boot Maven plugin
-./mvnw spring-boot:run -Dspring-boot.run.main-class=spring.springExercise.SqExrs.Chapter8.HttpsMethods.Application
+./mvnw spring-boot:run -Dspring-boot.run.main-class=spring.springExercise.SqExrs.Chapter8.HttpMethod.HttpsMethods.Application
 
 # Access endpoints:
 # http://localhost:8080/products       # GET: View all products (displays product list)
 # POST to http://localhost:8080/products  # POST: Add new product (form submission)
+```
+
+**Chapter 8: HttpsMethods2 (User & Comment Management)**:
+```bash
+# Run HttpsMethods2 standalone application
+./mvnw exec:java -Dexec.mainClass="spring.springExercise.SqExrs.Chapter8.HttpMethod.HttpsMethods2.Application"
+
+# Or use Spring Boot Maven plugin
+./mvnw spring-boot:run -Dspring-boot.run.main-class=spring.springExercise.SqExrs.Chapter8.HttpMethod.HttpsMethods2.Application
+
+# Access endpoints:
+# http://localhost:8080/               # GET: View all users and comments (displays user/comment list)
+# POST to http://localhost:8080/       # POST: Add new user with comment (form submission)
+# http://localhost:8080/{name}         # GET: View user by name (path variable)
 ```
 
 **Chapter 8: PathVariable**:
@@ -627,6 +652,8 @@ Each module contains standalone `Main.java` classes that can be executed indepen
 # http://localhost:8080/blue           # Path variable example (color: blue)
 # http://localhost:8080/{anyColor}      # Any color value
 ```
+
+**Note**: The `HttpsMethods2` module also demonstrates path variables with `@GetMapping("/{name}")` for user lookup by name.
 
 **Chapter 8: RequestParametr**:
 ```bash
@@ -650,8 +677,10 @@ Each module contains standalone `Main.java` classes that can be executed indepen
 - HTTP GET and POST methods with `@GetMapping` and `@PostMapping`
 - Service layer integration (`@Service`, `@Autowired`)
 - Thymeleaf expression syntax (`th:text`, `th:style`, `th:each`)
+- Nested property access in Thymeleaf (`user.comment.text` or `user.comment.getText()`)
 - Form handling with Thymeleaf templates
-- Product management CRUD operations
+- Product management CRUD operations (HttpsMethods)
+- User and Comment management with nested models (HttpsMethods2)
 
 ### Running from IDE
 
@@ -808,7 +837,7 @@ public class Controller {
 ### Example: HTTP GET/POST with Product Management
 
 ```java
-// File: SqExrs/Chapter8/HttpsMethods/Controller/Controller.java
+// File: SqExrs/Chapter8/HttpMethod/HttpsMethods/Controller/Controller.java
 @Controller
 public class Controller {
     @Autowired
@@ -853,6 +882,74 @@ public class Controller {
 - `@Autowired` injects dependencies
 - Thymeleaf `th:each` iterates over collections
 - Form submission posts data to the same endpoint
+
+### Example: HTTP GET/POST with User & Comment Management
+
+```java
+// File: SqExrs/Chapter8/HttpMethod/HttpsMethods2/Controller/Controller.java
+@Controller
+public class Controller {
+    @Autowired
+    private UserService service;
+
+    @GetMapping("/")
+    public String getHome(Model model){
+        model.addAttribute("user", service.getAllUser());
+        model.addAttribute("comment", service.getAllComment());
+        return "userComment.html";
+    }
+
+    @PostMapping("/")
+    public String post(@RequestParam String name,
+                       @RequestParam Integer age,
+                       @RequestParam String text,
+                       Model model){
+        var comment = new Comment(text);
+        var user = new User(name, age, comment);
+        service.add(user);
+        model.addAttribute("user", service.getAllUser());
+        model.addAttribute("comment", service.getAllComment());
+        return "userComment.html";
+    }
+
+    @GetMapping("/{name}")
+    public String getByName(@PathVariable String name, Model model){
+        model.addAttribute("user", service.fingByName(name));
+        return "names.html";
+    }
+}
+```
+
+**Template** (`templates/userComment.html`):
+```html
+<table>
+  <tr th:each="u: ${user}">
+    <td th:text="${u.name}"></td>
+    <td th:text="${u.age}"></td>
+    <td th:text="${u.comment.text}"></td>  <!-- Nested property access -->
+  </tr>
+</table>
+<form action="/" method="post">
+  Name: <input type="text" name="name">
+  Age: <input type="number" name="age">
+  Comment: <input type="text" name="text">
+  <button type="submit">Add user</button>
+</form>
+```
+
+**Template** (`templates/names.html`):
+```html
+<h1>Name: <span th:text="${user.name}"></span></h1>
+<p>Age: <span th:text="${user.age}"></span></p>
+<p>Comment: <span th:text="${user.comment.getText()}"></span></p>
+```
+
+**Key Learning Points**:
+- Managing multiple related models (User and Comment)
+- Nested property access in Thymeleaf: `${user.comment.text}` or `${user.comment.getText()}`
+- Combining `@GetMapping` with `@PathVariable` for dynamic routes
+- Service layer managing multiple entity lists
+- Form handling with multiple input fields
 
 ### Example: Path Variable
 
