@@ -1,10 +1,12 @@
 package spring.springExercise.Playground.Config;
 
 
+import jakarta.annotation.PostConstruct;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import spring.springExercise.Playground.Bean.Car;
+import spring.springExercise.Playground.Bean.Comment;
 import spring.springExercise.Playground.Bean.Parrot;
 
 @Configuration
@@ -36,9 +38,5 @@ public class ConfigApp {
     public Parrot parrot1(){
         return new Parrot("seond koko");
     }
-
-
-
-
 
 }
