@@ -132,63 +132,70 @@ springExercise/
 │   │   │   │   ├── Bean/                          # Exercise bean classes
 │   │   │   │   ├── Config/                        # Exercise configurations
 │   │   │   │   └── Main/                          # Exercise entry points (Ex1Main, Ex2Main, Ex3Main)
-│   │   │   └── SqExrs/                            # Structured exercises
-│   │   │       ├── Chapter3/                      # Bean configuration & dependency injection
-│   │   │       │   ├── Bean/                       # Parrot, Person beans
-│   │   │       │   ├── Configuration/              # Config classes (Config, Config2, Config3, etc.)
-│   │   │       │   └── Main.java                   # Chapter 3 entry point
-│   │   │       ├── Chapter4/                       # Services, repositories, proxies
-│   │   │       │   ├── Model/                      # Comment model
-│   │   │       │   ├── PaymentSystem/              # Payment examples (v1, v2)
+│   │   │   └── SqExrs/                            # Structured exercises (Chapters 3–9 reorganized into named modules)
+│   │   │       ├── WiringBeans/                   # Former Chapter 3: bean configuration & dependency injection
+│   │   │       │   ├── Bean/                      # Parrot, Person beans
+│   │   │       │   ├── Configuration/             # Config classes (Config, Config2, Config3, etc.)
+│   │   │       │   └── Main*.java                 # Entry points (Main, Main2, Main4)
+│   │   │       ├── UsingAbstractions/             # Former Chapter 4: services, repositories, proxies
+│   │   │       │   ├── Model/                     # Comment model and entry-point Main
+│   │   │       │   ├── PaymentSystem/             # Payment examples (v1, v2)
 │   │   │       │   ├── NotificationBasic/         # Notification examples (v1, v2)
-│   │   │       │   ├── Service/                    # Service layer
-│   │   │       │   ├── Repository/                 # Repository layer
-│   │   │       │   └── Proxy/                      # Proxy pattern examples
-│   │   │       ├── Chapter5/                       # Bean scopes
-│   │   │           ├── Singleton/                  # Singleton scope examples
-│   │   │           ├── Protorype/                  # Prototype scope examples
-│   │   │           ├── Eager_Instantiation/        # Eager loading examples
-│   │   │           └── Lazy_Instantiation/         # Lazy loading examples
-│   │   │       ├── Chapter6/                       # Aspect-Oriented Programming (AOP)
-│   │   │           ├── Aspects/                    # AOP examples with @Aspect
-│   │   │           ├── AnnotationInterceptedMethods/  # AOP with custom annotations
-│   │   │           ├── InterceptedMethodParameter/     # Modifying method parameters
-│   │   │           ├── TwoAspectsInOneMethod/          # Multiple aspects ordering
-│   │   │           └── NO_Aspects/                 # Comparison without AOP
-│   │   │       ├── Chapter7/                       # Spring Boot Web (REST)
-│   │   │           ├── Application.java            # Spring Boot application
-│   │   │           └── HelloController.java        # REST controller example
-│   │   │       ├── Chapter8/                       # Thymeleaf Templates
-│   │   │       │   ├── Application.java            # Spring Boot application
-│   │   │       │   ├── Controller.java             # MVC controller with templates
-│   │   │       │   ├── Comment.java                # Comment model
-│   │   │       │   ├── HttpMethod/                 # HTTP method examples
-│   │   │       │   │   ├── HttpsMethods/            # Product management (GET/POST)
-│   │   │       │   │   │   ├── Application.java    # Standalone Spring Boot app
-│   │   │       │   │   │   ├── Controller/         # Product controller
-│   │   │       │   │   │   ├── Service/            # ProductService
-│   │   │       │   │   │   ├── Model/              # Products model
-│   │   │       │   │   │   └── Configuration/      # Config class
-│   │   │       │   │   └── HttpsMethods2/          # User & Comment management
-│   │   │       │   │       ├── Application.java    # Standalone Spring Boot app
-│   │   │       │   │       ├── Controller/         # User/Comment controller
-│   │   │       │   │       ├── Service/            # UserService
-│   │   │       │   │       ├── Model/              # User, Comment models
-│   │   │       │   │       └── Configuration/      # Config class
-│   │   │       │   ├── PathVariable/               # Path variable examples
-│   │   │       │   │   ├── Application.java        # Standalone Spring Boot app
-│   │   │       │   │   └── Controller.java         # Path variable controller
-│   │   │       │   └── RequestParametr/            # Request parameter examples
-│   │   │       │       ├── Application.java        # Standalone Spring Boot app
-│   │   │       │       └── Controller.java         # Request parameter controller
-│   │   │       └── Chapter9/                       # Request & Session Scoped Beans
-│   │   │           ├── RequestScopedBean/          # Request-scoped bean examples
-│   │   │           │   └── Login/                  # Login example
-│   │   │           │       ├── Main.java           # Entry point
-│   │   │           │       ├── Config.java         # Configuration class
-│   │   │           │       ├── Controller.java     # Login controller (GET/POST)
-│   │   │           │       └── LoginProcessor.java # Request-scoped login bean
-│   │   │           └── SessionScopedBean/          # Session-scoped bean examples (placeholder)
+│   │   │       │   ├── Service/                   # Service layer
+│   │   │       │   ├── Repository/                # Repository layer
+│   │   │       │   ├── Proxy/                     # Proxy pattern examples
+│   │   │       │   └── v2/                        # Alternative abstraction-based implementation (email/SMS)
+│   │   │       ├── BeanScopes/                    # Former Chapter 5: bean scopes
+│   │   │       │   ├── Singleton/                 # Singleton scope examples
+│   │   │       │   ├── Protorype/                 # Prototype scope examples
+│   │   │       │   ├── Eager_Instantiation/       # Eager loading examples
+│   │   │       │   ├── Lazy_Instantiation/        # Lazy loading examples
+│   │   │       │   ├── Config*.java               # Scope configuration classes
+│   │   │       │   └── Main*.java                 # Scope demonstration entry points
+│   │   │       ├── SpringAOC/                     # Former Chapter 6: Aspect-Oriented Programming (AOP)
+│   │   │       │   ├── Aspects/                   # AOP examples with @Aspect
+│   │   │       │   ├── AnnotationInterceptedMethods/  # AOP with custom annotations
+│   │   │       │   ├── InterceptedMethodParameter/    # Modifying method parameters
+│   │   │       │   ├── TwoAspectsInOneMethod/         # Multiple aspects ordering
+│   │   │       │   └── NO_Aspects/                # Comparison without AOP
+│   │   │       ├── SpringBoot/                    # Former Chapters 7 & 8: Spring Boot + Thymeleaf
+│   │   │       │   ├── Application.java           # Spring Boot application
+│   │   │       │   ├── Controller.java            # MVC controller with templates
+│   │   │       │   ├── Comment.java               # Comment model
+│   │   │       │   ├── HttpMethod/                # HTTP method examples
+│   │   │       │   │   ├── HttpsMethods/          # Product management (GET/POST)
+│   │   │       │   │   │   ├── Application.java   # Standalone Spring Boot app
+│   │   │       │   │   │   ├── Controller/        # Product controller
+│   │   │       │   │   │   ├── Service/           # ProductService
+│   │   │       │   │   │   ├── Model/             # Products model
+│   │   │       │   │   │   └── Configuration/     # Config class
+│   │   │       │   │   └── HttpsMethods2/         # User & Comment management
+│   │   │       │   │       ├── Application.java   # Standalone Spring Boot app
+│   │   │       │   │       ├── Controller/        # User/Comment controller
+│   │   │       │   │       ├── Service/           # UserService
+│   │   │       │   │       ├── Model/             # User, Comment models
+│   │   │       │   │       └── Configuration/     # Config class
+│   │   │       │   ├── PathVariable/              # Path variable examples
+│   │   │       │   │   ├── Application.java       # Standalone Spring Boot app
+│   │   │       │   │   └── Controller.java        # Path variable controller
+│   │   │       │   └── RequestParametr/           # Request parameter examples
+│   │   │       │       ├── Application.java       # Standalone Spring Boot app
+│   │   │       │       └── Controller.java        # Request parameter controller
+│   │   │       ├── SpringMVC/                     # REST-style controller without templates
+│   │   │       │   ├── Application.java           # Spring Boot application
+│   │   │       │   └── HelloController.java       # REST controller example
+│   │   │       └── WebScopes/                     # Former Chapter 9: web request/session scopes
+│   │   │           └── RequestScopedBean/         # Request-scoped bean examples
+│   │   │               ├── FeedbackForm/          # Feedback form example
+│   │   │               │   ├── Configuration/     # Config.java
+│   │   │               │   ├── Controller/        # FormController.java
+│   │   │               │   ├── Model/             # Form.java
+│   │   │               │   └── Service/           # FormService.java
+│   │   │               └── Login/                 # Login example
+│   │   │                   ├── Main.java          # Entry point
+│   │   │                   ├── Config.java        # Configuration class
+│   │   │                   ├── Controller.java    # Login controller (GET/POST)
+│   │   │                   └── LoginProcessor.java# Request-scoped login bean
 │   │   └── resources/
 │   │       ├── templates/                          # Thymeleaf templates
 │   │       │   ├── home.html                       # Home page template
