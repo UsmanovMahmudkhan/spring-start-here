@@ -17,6 +17,7 @@ graph TB
         I --> M[Chapter 6: AOP]
         I --> N[Chapter 7: Spring Boot Web]
         I --> O[Chapter 8: Thymeleaf]
+        I --> P[Chapter 9: Request & Session Scopes]
         
         J --> J1[Bean Configuration]
         J --> J2[Dependency Injection]
@@ -47,6 +48,11 @@ graph TB
         O2 --> O2B[User & Comment Management]
         O2 --> O2C[Service Layer]
         O2 --> O2D[Form Handling]
+        
+        P --> P1[Request-Scoped Beans]
+        P --> P2[Session-Scoped Beans]
+        
+        P1 --> P1A[Login Example]
     end
     
     style A fill:#e1f5ff
@@ -119,9 +125,9 @@ springExercise/
 │   │   ├── java/spring/springExercise/
 │   │   │   ├── SpringExerciseApplication.java    # Main Spring Boot application
 │   │   │   ├── Playground/                        # Basic Spring concepts
-│   │   │   │   ├── Bean/                          # Bean classes (Car, Parrot, etc.)
+│   │   │   │   ├── Bean/                          # Bean classes (Car, Parrot, Comment, etc.)
 │   │   │   │   ├── Config/                        # Configuration classes
-│   │   │   │   └── Main/                          # Entry points for playground examples
+│   │   │   │   └── Main/                          # Entry points for playground examples (Main, Main2)
 │   │   │   ├── Practice/                          # Practice exercises
 │   │   │   │   ├── Bean/                          # Exercise bean classes
 │   │   │   │   ├── Config/                        # Exercise configurations
@@ -152,29 +158,37 @@ springExercise/
 │   │   │       ├── Chapter7/                       # Spring Boot Web (REST)
 │   │   │           ├── Application.java            # Spring Boot application
 │   │   │           └── HelloController.java        # REST controller example
-│   │   │       └── Chapter8/                       # Thymeleaf Templates
-│   │   │           ├── Application.java            # Spring Boot application
-│   │   │           ├── Controller.java             # MVC controller with templates
-│   │   │           ├── Comment.java                # Comment model
-│   │   │           ├── HttpMethod/                 # HTTP method examples
-│   │   │           │   ├── HttpsMethods/            # Product management (GET/POST)
-│   │   │           │   │   ├── Application.java    # Standalone Spring Boot app
-│   │   │           │   │   ├── Controller/         # Product controller
-│   │   │           │   │   ├── Service/            # ProductService
-│   │   │           │   │   ├── Model/              # Products model
-│   │   │           │   │   └── Configuration/      # Config class
-│   │   │           │   └── HttpsMethods2/          # User & Comment management
-│   │   │           │       ├── Application.java    # Standalone Spring Boot app
-│   │   │           │       ├── Controller/         # User/Comment controller
-│   │   │           │       ├── Service/            # UserService
-│   │   │           │       ├── Model/              # User, Comment models
-│   │   │           │       └── Configuration/      # Config class
-│   │   │           ├── PathVariable/               # Path variable examples
-│   │   │           │   ├── Application.java        # Standalone Spring Boot app
-│   │   │           │   └── Controller.java         # Path variable controller
-│   │   │           └── RequestParametr/            # Request parameter examples
-│   │   │               ├── Application.java        # Standalone Spring Boot app
-│   │   │               └── Controller.java         # Request parameter controller
+│   │   │       ├── Chapter8/                       # Thymeleaf Templates
+│   │   │       │   ├── Application.java            # Spring Boot application
+│   │   │       │   ├── Controller.java             # MVC controller with templates
+│   │   │       │   ├── Comment.java                # Comment model
+│   │   │       │   ├── HttpMethod/                 # HTTP method examples
+│   │   │       │   │   ├── HttpsMethods/            # Product management (GET/POST)
+│   │   │       │   │   │   ├── Application.java    # Standalone Spring Boot app
+│   │   │       │   │   │   ├── Controller/         # Product controller
+│   │   │       │   │   │   ├── Service/            # ProductService
+│   │   │       │   │   │   ├── Model/              # Products model
+│   │   │       │   │   │   └── Configuration/      # Config class
+│   │   │       │   │   └── HttpsMethods2/          # User & Comment management
+│   │   │       │   │       ├── Application.java    # Standalone Spring Boot app
+│   │   │       │   │       ├── Controller/         # User/Comment controller
+│   │   │       │   │       ├── Service/            # UserService
+│   │   │       │   │       ├── Model/              # User, Comment models
+│   │   │       │   │       └── Configuration/      # Config class
+│   │   │       │   ├── PathVariable/               # Path variable examples
+│   │   │       │   │   ├── Application.java        # Standalone Spring Boot app
+│   │   │       │   │   └── Controller.java         # Path variable controller
+│   │   │       │   └── RequestParametr/            # Request parameter examples
+│   │   │       │       ├── Application.java        # Standalone Spring Boot app
+│   │   │       │       └── Controller.java         # Request parameter controller
+│   │   │       └── Chapter9/                       # Request & Session Scoped Beans
+│   │   │           ├── RequestScopedBean/          # Request-scoped bean examples
+│   │   │           │   └── Login/                  # Login example
+│   │   │           │       ├── Main.java           # Entry point
+│   │   │           │       ├── Config.java         # Configuration class
+│   │   │           │       ├── Controller.java     # Login controller (GET/POST)
+│   │   │           │       └── LoginProcessor.java # Request-scoped login bean
+│   │   │           └── SessionScopedBean/          # Session-scoped bean examples (placeholder)
 │   │   └── resources/
 │   │       ├── templates/                          # Thymeleaf templates
 │   │       │   ├── home.html                       # Home page template
@@ -183,7 +197,8 @@ springExercise/
 │   │       │   ├── name.html                       # Name example template (RequestParam)
 │   │       │   ├── names.html                      # User name template (HttpsMethods2)
 │   │       │   ├── allproducts.html                # Products list template (HttpsMethods)
-│   │       │   └── userComment.html                # User & Comment template (HttpsMethods2)
+│   │       │   ├── userComment.html                # User & Comment template (HttpsMethods2)
+│   │       │   └── login.html                      # Login page template (Chapter 9 RequestScopedBean)
 │   │       └── application.properties              # Spring Boot configuration
 │   └── test/
 │       └── java/spring/springExercise/
