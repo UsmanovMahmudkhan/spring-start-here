@@ -1,8 +1,6 @@
 package spring.springExercise.SqExrs.Chapter3;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import spring.springExercise.Playground.Config.ConfigApp;
-import spring.springExercise.SqExrs.Chapter3.*;
 import spring.springExercise.SqExrs.Chapter3.Bean.Parrot;
 import spring.springExercise.SqExrs.Chapter3.Bean.Person;
 import spring.springExercise.SqExrs.Chapter3.Bean.Person3;
