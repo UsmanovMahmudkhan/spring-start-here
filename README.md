@@ -11,8 +11,8 @@ graph TB
         E --> G[Exercise 2: Dependency Injection]
         E --> H[Exercise 3: Advanced Configuration]
         
-        I[SqExrs Module] --> J[WiringBeans (Bean & DI)]
-        I --> K[UsingAbstractions (Services & Proxies)]
+        I[SqExrs Module] --> J[WiringBeans (Bean and DI)]
+        I --> K[UsingAbstractions (Services and Proxies)]
         I --> L[BeanScopes]
         I --> M[SpringAOC (AOP)]
         I --> N[SpringBoot (MVC + Thymeleaf)]
@@ -22,10 +22,10 @@ graph TB
         J --> J1[Bean Configuration]
         J --> J2[Dependency Injection]
         
-        K --> K1[Payment System v1/v2]
+        K --> K1[Payment System v1 and v2]
         K --> K2[Comment Service]
         K --> K3[Notification System]
-        K --> K4[Abstraction v2 (Email/SMS)]
+        K --> K4[Abstraction v2 (Email and SMS)]
         
         L --> L1[Singleton Scope]
         L --> L2[Prototype Scope]
@@ -38,8 +38,8 @@ graph TB
         M --> M5[NO_Aspects Comparison]
         
         N --> N1[Thymeleaf Controllers]
-        N --> N2[HTTP Methods (Products/Users)]
-        N --> N3[PathVariable & RequestParam]
+        N --> N2[HTTP Methods (Products and Users)]
+        N --> N3[PathVariable and RequestParam]
         N --> N4[Spring Boot Application]
         
         O --> O1[REST Controllers]
