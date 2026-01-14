@@ -11,13 +11,13 @@ graph TB
         E --> G[Exercise 2: Dependency Injection]
         E --> H[Exercise 3: Advanced Configuration]
         
-        I[SqExrs Module] --> J[Chapter 3: Bean & DI]
-        I --> K[Chapter 4: Services & Proxies]
-        I --> L[Chapter 5: Bean Scopes]
-        I --> M[Chapter 6: AOP]
-        I --> N[Chapter 7: Spring Boot Web]
-        I --> O[Chapter 8: Thymeleaf]
-        I --> P[Chapter 9: Request & Session Scopes]
+        I[SqExrs Module] --> J[WiringBeans (Bean & DI)]
+        I --> K[UsingAbstractions (Services & Proxies)]
+        I --> L[BeanScopes]
+        I --> M[SpringAOC (AOP)]
+        I --> N[SpringBoot (MVC + Thymeleaf)]
+        I --> O[SpringMVC (REST-only)]
+        I --> P[WebScopes (Request Scopes)]
         
         J --> J1[Bean Configuration]
         J --> J2[Dependency Injection]
@@ -25,6 +25,7 @@ graph TB
         K --> K1[Payment System v1/v2]
         K --> K2[Comment Service]
         K --> K3[Notification System]
+        K --> K4[Abstraction v2 (Email/SMS)]
         
         L --> L1[Singleton Scope]
         L --> L2[Prototype Scope]
@@ -36,23 +37,16 @@ graph TB
         M --> M4[Multiple Aspects]
         M --> M5[NO_Aspects Comparison]
         
-        N --> N1[REST Controllers]
-        N --> N2[Spring Boot Application]
+        N --> N1[Thymeleaf Controllers]
+        N --> N2[HTTP Methods (Products/Users)]
+        N --> N3[PathVariable & RequestParam]
+        N --> N4[Spring Boot Application]
         
-        O --> O1[Thymeleaf Templates]
-        O --> O2[HTTP GET/POST Methods]
-        O --> O3[Path Variables]
-        O --> O4[Request Parameters]
+        O --> O1[REST Controllers]
+        O --> O2[Spring Boot Application]
         
-        O2 --> O2A[Product Management]
-        O2 --> O2B[User & Comment Management]
-        O2 --> O2C[Service Layer]
-        O2 --> O2D[Form Handling]
-        
-        P --> P1[Request-Scoped Beans]
-        P --> P2[Session-Scoped Beans]
-        
-        P1 --> P1A[Login Example]
+        P --> P1[Login (Request-Scoped Bean)]
+        P --> P2[Feedback Form (Request-Scoped Bean)]
     end
     
     style A fill:#e1f5ff
