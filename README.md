@@ -17,7 +17,7 @@ graph TB
         I --> M["SpringAOC (AOP)"]
         I --> N["SpringBoot (MVC + Thymeleaf)"]
         I --> O["SpringMVC (REST-only)"]
-        I --> P["WebScopes (Request Scopes)"]
+        I --> P["WebScopes (Request & Session Scopes)"]
         
         J --> J1["Bean Configuration"]
         J --> J2["Dependency Injection"]
@@ -45,8 +45,16 @@ graph TB
         O --> O1["REST Controllers"]
         O --> O2["Spring Boot Application"]
         
-        P --> P1["Login (Request-Scoped Bean)"]
-        P --> P2["Feedback Form (Request-Scoped Bean)"]
+        P --> P_REQ["Request Scoped Beans"]
+        P --> P_SES["Session Scoped Beans"]
+        
+        P_REQ --> P_REQ1["Login"]
+        P_REQ --> P_REQ2["Feedback Form"]
+        P_REQ --> P_REQ3["Access Code"]
+        P_REQ --> P_REQ4["Calculator"]
+        
+        P_SES --> P_SES1["Session Counter"]
+        P_SES --> P_SES2["Username Storage"]
     end
     
     style A fill:#e1f5ff
@@ -179,31 +187,67 @@ springExercise/
 │   │   │       │   ├── Application.java           # Spring Boot application
 │   │   │       │   └── HelloController.java       # REST controller example
 │   │   │       └── WebScopes/                     # Former Chapter 9: web request/session scopes
-│   │   │           └── RequestScopedBean/         # Request-scoped bean examples
-│   │   │               ├── FeedbackForm/          # Feedback form example
-│   │   │               │   ├── Configuration/     # Config.java
-│   │   │               │   ├── Controller/        # FormController.java
-│   │   │               │   ├── Model/             # Form.java
-│   │   │               │   └── Service/           # FormService.java
-│   │   │               └── Login/                 # Login example
-│   │   │                   ├── Main.java          # Entry point
-│   │   │                   ├── Config.java        # Configuration class
-│   │   │                   ├── Controller.java    # Login controller (GET/POST)
-│   │   │                   └── LoginProcessor.java# Request-scoped login bean
+│   │   │           ├── RequestScopedBean/         # Request-scoped bean examples
+│   │   │           │   ├── AccessCodeValidation/  # Access code validation
+│   │   │           │   │   ├── AccessCode.java
+│   │   │           │   │   ├── AccessCodeService.java
+│   │   │           │   │   ├── App.java
+│   │   │           │   │   ├── Config.java
+│   │   │           │   │   └── Controller.java
+│   │   │           │   ├── Calculator/            # Calculator example
+│   │   │           │   │   ├── Application.java
+│   │   │           │   │   ├── CalculatorController.java
+│   │   │           │   │   ├── CalculatorRequest.java
+│   │   │           │   │   ├── CalculatorService.java
+│   │   │           │   │   └── Config.java
+│   │   │           │   ├── FeedbackForm/          # Feedback form example
+│   │   │           │   │   ├── Configuration/     # Config.java
+│   │   │           │   │   ├── Controller/        # FormController.java
+│   │   │           │   │   ├── Model/             # Form.java
+│   │   │           │   │   └── Service/           # FormService.java
+│   │   │           │   └── Login/                 # Login example
+│   │   │           │       ├── Main.java          # Entry point
+│   │   │           │       ├── Config.java        # Configuration class
+│   │   │           │       ├── Controller.java    # Login controller (GET/POST)
+│   │   │           │       └── LoginProcessor.java# Request-scoped login bean
+│   │   │           └── SessionScopedBean/         # Session-scoped bean examples
+│   │   │               ├── SessionCounter/        # Session counter example
+│   │   │               │   ├── App.java
+│   │   │               │   ├── Config.java
+│   │   │               │   ├── Controller.java
+│   │   │               │   ├── Counter.java
+│   │   │               │   └── CounterService.java
+│   │   │               └── UsernameStorage/       # Username storage example
+│   │   │                   ├── App.java
+│   │   │                   ├── Configuration.java
+│   │   │                   ├── UserController.java
+│   │   │                   ├── Username.java
+│   │   │                   └── UserNameService.java
 │   │   └── resources/
 │   │       ├── templates/                          # Thymeleaf templates
-│   │       │   ├── home.html                       # Home page template
-│   │       │   ├── main.html                       # Main page template
+│   │       │   ├── Math.html                       # Calculator template
+│   │       │   ├── access.html                     # Access code template
+│   │       │   ├── allproducts.html                # Products list template (HttpsMethods)
 │   │       │   ├── color.html                      # Color example template (PathVariable)
+│   │       │   ├── counter.html                    # Session counter template
+│   │       │   ├── form.html                       # Feedback form template
+│   │       │   ├── formResult.html                 # Feedback result template
+│   │       │   ├── home.html                       # Home page template
+│   │       │   ├── login.html                      # Login page template (Chapter 9 RequestScopedBean)
+│   │       │   ├── main.html                       # Main page template
 │   │       │   ├── name.html                       # Name example template (RequestParam)
 │   │       │   ├── names.html                      # User name template (HttpsMethods2)
-│   │       │   ├── allproducts.html                # Products list template (HttpsMethods)
+│   │       │   ├── readName.html
+│   │       │   ├── show.html
 │   │       │   ├── userComment.html                # User & Comment template (HttpsMethods2)
-│   │       │   └── login.html                      # Login page template (Chapter 9 RequestScopedBean)
+│   │       │   └── username.html                   # Username storage template
 │   │       └── application.properties              # Spring Boot configuration
 │   └── test/
 │       └── java/spring/springExercise/
-│           └── SpringExerciseApplicationTests.java # Basic test class
+│           ├── SpringExerciseApplicationTests.java # Basic test class
+│           └── SqExrs/                            # Exercise tests
+│               ├── Chapter7/                      # Chapter 7 tests
+│               └── SpringMVC/                     # Spring MVC tests
 ├── pom.xml                                         # Maven project configuration
 ├── mvnw                                            # Maven wrapper (Unix)
 ├── mvnw.cmd                                        # Maven wrapper (Windows)
