@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Show</title>
+</head>
+<body>
+<h4 th:text="${msg}"></h4>
+<p>
+ Name:  <span th:text="${studentSession.getName()}"></span>
+  Major: <span th:text="${studentSession.getMajor()}"></span>
+  Year: <span th:text="${studentSession.getYear()}"></span>
+</p>
+</body>
+<a href="/">go back...</a>
+</html>
