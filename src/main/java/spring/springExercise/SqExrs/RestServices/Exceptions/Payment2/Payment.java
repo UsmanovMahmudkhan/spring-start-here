@@ -2,9 +2,9 @@ package spring.springExercise.SqExrs.RestServices.Exceptions.Payment2;
 
 
 public class Payment {
-    double money;
+    int money;
 
-    public Payment(double money) {
+    public Payment(int money) {
         this.money = money;
     }
 
@@ -12,7 +12,7 @@ public class Payment {
         return money;
     }
 
-    public void setMoney(double money) {
+    public void setMoney(int money) {
         this.money = money;
     }
 }
