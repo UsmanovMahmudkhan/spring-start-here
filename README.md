@@ -18,6 +18,7 @@ graph TB
         I --> N["SpringBoot (MVC + Thymeleaf)"]
         I --> O["SpringMVC (REST-only)"]
         I --> P["WebScopes (Request & Session Scopes)"]
+        I --> Q["RestServices (REST APIs)"]
         
         J --> J1["Bean Configuration"]
         J --> J2["Dependency Injection"]
@@ -55,6 +56,10 @@ graph TB
         
         P_SES --> P_SES1["Session Counter"]
         P_SES --> P_SES2["Username Storage"]
+
+        Q --> Q1["Exceptions (Advice & Handlers)"]
+        Q --> Q2["Response Bodies (DTOs & JSON)"]
+        Q --> Q3["Status & Headers (Validation)"]
     end
     
     style A fill:#e1f5ff
@@ -223,6 +228,25 @@ springExercise/
 │   │   │                   ├── UserController.java
 │   │   │                   ├── Username.java
 │   │   │                   └── UserNameService.java
+│   │   │       ├── RestServices/                  # REST Services (Exceptions, Response Bodies, Status)
+│   │   │       │   ├── Exceptions/                # REST Exception Handling
+│   │   │       │   │   ├── App.java
+│   │   │       │   │   ├── Config.java
+│   │   │       │   │   ├── RestController.java
+│   │   │       │   │   ├── RestControllerAdvice.java  # @RestControllerAdvice example
+│   │   │       │   │   └── Payment2/              # Payment exception example
+│   │   │       │   ├── SendingObjects_AsResponseBody/ # Return values as Response Body
+│   │   │       │   │   ├── Client/                # Client example
+│   │   │       │   │   ├── Country/               # Country example
+│   │   │       │   │   └── DTOasJSON/             # Returning DTOs as JSON
+│   │   │       │   │       ├── App.java
+│   │   │       │   │       ├── Config/
+│   │   │       │   │       ├── DTO/
+│   │   │       │   │       └── RestController/
+│   │   │       │   └── StatusAndHeaders/          # Status codes and Response Headers
+│   │   │       │       ├── CustomStatus/          # Custom HTTP status
+│   │   │       │       ├── User/                  # User management
+│   │   │       │       └── ValidationOutcome/     # Validation examples
 │   │   └── resources/
 │   │       ├── templates/                          # Thymeleaf templates
 │   │       │   ├── Math.html                       # Calculator template
