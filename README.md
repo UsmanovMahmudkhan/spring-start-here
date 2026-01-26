@@ -155,10 +155,13 @@ springExercise/
 │   │   │       ├── BeanScopes/                    # Former Chapter 5: bean scopes
 │   │   │       │   ├── Singleton/                 # Singleton scope examples
 │   │   │       │   ├── Protorype/                 # Prototype scope examples
+
 │   │   │       │   ├── Eager_Instantiation/       # Eager loading examples
 │   │   │       │   ├── Lazy_Instantiation/        # Lazy loading examples
 │   │   │       │   ├── Config*.java               # Scope configuration classes
-│   │   │       │   └── Main*.java                 # Scope demonstration entry points
+│   │   │       │   ├── Main*.java                 # Scope demonstration entry points
+│   │   │       │   ├── Comment*.java              # Service and Repository classes
+│   │   │       │   └── UserService.java           # User service example
 │   │   │       ├── SpringAOC/                     # Former Chapter 6: Aspect-Oriented Programming (AOP)
 │   │   │       │   ├── Aspects/                   # AOP examples with @Aspect
 │   │   │       │   ├── AnnotationInterceptedMethods/  # AOP with custom annotations
@@ -243,10 +246,17 @@ springExercise/
 │   │   │       │   │       ├── Config/
 │   │   │       │   │       ├── DTO/
 │   │   │       │   │       └── RestController/
+
 │   │   │       │   └── StatusAndHeaders/          # Status codes and Response Headers
 │   │   │       │       ├── CustomStatus/          # Custom HTTP status
 │   │   │       │       ├── User/                  # User management
 │   │   │       │       └── ValidationOutcome/     # Validation examples
+│   │   │       ├── ConsumingRestEndoints/         # Consuming REST APIs
+│   │   │       │   ├── OpenFeign/                 # OpenFeign examples
+│   │   │       │   │   └── ProductServiceCall/    # Inter-service communication
+│   │   │       │   │       ├── ProductService/    # Product microservice
+│   │   │       │   │       └── UserService/       # User microservice
+│   │   │       │   └── Webclient/                 # WebClient examples
 │   │   └── resources/
 │   │       ├── templates/                          # Thymeleaf templates
 │   │       │   ├── Math.html                       # Calculator template
