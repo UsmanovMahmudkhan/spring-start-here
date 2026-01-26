@@ -4,8 +4,8 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 
 public class Main {
     public static void main(String[] args) {
-        var contex=new AnnotationConfigApplicationContext(Config.class);
-        var getService=contex.getBean(NotificatoinService.class);
+        var context = new AnnotationConfigApplicationContext(Config.class);
+        var getService = context.getBean(NotificatoinService.class);
         getService.start();
     }
 }
