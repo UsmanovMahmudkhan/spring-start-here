@@ -1,5 +1,5 @@
-CREATE TABLE product (
+CREATE TABLE student (
   id INT AUTO_INCREMENT PRIMARY KEY,
   name VARCHAR(255),
-  price FLOAT
+  age INT
 );

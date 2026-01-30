@@ -1,13 +1,11 @@
-package spring.springExercise.SqExrs.DataSource.JDBCTemplate;
+package spring.springExercise.SqExrs.DataSource.H2;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@SpringBootApplication(scanBasePackages = "spring.springExercise.SqExrs.DataSource.JDBCTemplate")
+@SpringBootApplication(scanBasePackages = "spring.springExercise.SqExrs.DataSource.H2")
 public class App {
     public static void main(String[] args) {
         SpringApplication.run(App.class,args);
-
     }
-
 }
