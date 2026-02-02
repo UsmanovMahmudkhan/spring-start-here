@@ -4,6 +4,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import spring.springExercise.SqExrs.DataSource.University.Model.Course;
+import spring.springExercise.SqExrs.DataSource.University.Model.Registration;
 import spring.springExercise.SqExrs.DataSource.University.Model.Student;
 
 import java.util.List;
@@ -29,5 +30,22 @@ public class RegisterRepo {
                 "where student_id = ?\n" +
                 "and course_id = ?\n" +
                 "limit 1";
+
+        RowMapper<Registration>registrationRowMapper=(rs,index)->{
+            Registration registration=new Registration();
+            registration.setId(rs.getBigDecimal("id"));
+            registration.setCourse_id(rs.getBigDecimal("course_id"));
+            registration.setStudent_id(rs.getBigDecimal("student_id"));
+            registration.setRegistered_at(rs.getTimestamp("registered_at"));
+            return registration;
+        };
+
+        List<Registration>registrations=template.query(query,registrationRowMapper,student.getId(),course.getId());
+
+        if(registrations.isEmpty()){
+            return false;
+        }
+        return true;
+
     }
 }

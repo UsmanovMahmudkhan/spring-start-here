@@ -7,4 +7,7 @@
 	•	GET /courses/{id}/students
 
 
+# For Running
 
+`mvn exec:java -Dexec.mainClass="spring.springExercise.SqExrs.DataSource.University.App" -Dmaven.test.skip=true
+`
