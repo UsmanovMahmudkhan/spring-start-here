@@ -83,7 +83,7 @@ public class StudentRepo {
             Course course=new Course();
             course.setId(rs.getBigDecimal("id"));
             course.setCode(rs.getString("code"));
-            course.setCredit(rs.getInt("credit"));
+            course.setCredit(rs.getInt("credits"));
             course.setTitle(rs.getString("title"));
             return course;
         };

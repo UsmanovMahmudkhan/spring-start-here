@@ -22,13 +22,13 @@ public class CourseController {
         this.courseService = courseService;
     }
 
-    @PostMapping("/add/course")
+    @PostMapping("/post/course")
     public ResponseEntity<String>postCourse(@RequestBody Course course) throws AlreadyRegisteredException {
         courseService.publishCourse(course);
         return ResponseEntity.ok("Succesfully registered");
     }
 
-    @GetMapping("all/courses")
+    @GetMapping("/courses")
     public ResponseEntity<List<Course>>getAll(){
         return ResponseEntity
                 .status(HttpStatus.ACCEPTED)

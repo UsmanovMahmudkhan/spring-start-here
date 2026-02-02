@@ -7,7 +7,7 @@ public class Registration {
     private BigDecimal id;
     private BigDecimal student_id;
     private BigDecimal course_id;
-    private Timestamp registered_at;
+    private Timestamp registered_at = new Timestamp(System.currentTimeMillis());
 
     public Registration() {
     }

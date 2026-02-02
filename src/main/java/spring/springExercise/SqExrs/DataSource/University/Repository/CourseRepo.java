@@ -22,7 +22,7 @@ public class CourseRepo {
     }
 
     public void registerCourse(Course course){
-        String query="INSERT INTO courses(code,title,credit) VALUES(?,?,?)";
+        String query="INSERT INTO courses(code,title,credits) VALUES(?,?,?)";
         jdbcTemplate.update(query,course.getCode(),course.getTitle(),course.getCredit());
         log.info("New Values are added in Course: "+course);
     }
@@ -35,7 +35,7 @@ public class CourseRepo {
             course.setId(rs.getBigDecimal("id"));
             course.setCode(rs.getString("code"));
             course.setTitle(rs.getString("title"));
-            course.setCredit(rs.getInt("credit"));
+            course.setCredit(rs.getInt("credits"));
             return course;
         };
 
@@ -43,12 +43,12 @@ public class CourseRepo {
     }
 
     public boolean findByID(BigDecimal id){
-        String query="SELECT * FROM course where id=?";
+        String query="SELECT * FROM courses where id=?";
         RowMapper<Course>rowMapper=(rs,inx)->
         {
             Course c=new Course();
             c.setId(rs.getBigDecimal("id"));
-            c.setCredit(rs.getInt("credit"));
+            c.setCredit(rs.getInt("credits"));
             c.setCode(rs.getString("code"));
             c.setTitle(rs.getString("title"));
             return c;
@@ -63,10 +63,7 @@ public class CourseRepo {
     }
 
     public List<Student>getStudentsForOneCourse(Course course){
-        String query="SELECT s.id, s.student_number, s.name, s.email\n" +
-                "FROM students s\n" +
-                "JOIN registrations r ON r.student_id = s.id\n" +
-                "WHERE r.course_id = 1;=?";
+        String query="SELECT s.id, s.student_number, s.name, s.email FROM students s JOIN registrations r ON r.student_id = s.id WHERE r.course_id=?";
 
         RowMapper<Student>rowMapper=(rs,index)
                 ->{

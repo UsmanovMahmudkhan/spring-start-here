@@ -3,6 +3,7 @@ package spring.springExercise.SqExrs.DataSource.University.Controller;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import spring.springExercise.SqExrs.DataSource.University.Exceptions.StudentNotFound;
 import spring.springExercise.SqExrs.DataSource.University.Model.Course;
 import spring.springExercise.SqExrs.DataSource.University.Model.Student;
 import spring.springExercise.SqExrs.DataSource.University.Service.StudentService;
@@ -18,7 +19,7 @@ public class StudentRestController {
     }
 
     @PostMapping("/add/students")
-    public void postStudent(@RequestBody Student student){
+    public void postStudent(@RequestBody Student student) throws StudentNotFound {
         studentService.registerStudent(student);
     }
 

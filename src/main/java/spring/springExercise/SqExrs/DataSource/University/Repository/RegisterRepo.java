@@ -25,11 +25,7 @@ public class RegisterRepo {
 
 
     public boolean checkExist(Student student, Course course) {
-        String query="select 1\n" +
-                "from registrations\n" +
-                "where student_id = ?\n" +
-                "and course_id = ?\n" +
-                "limit 1";
+        String query="select * from registrations where student_id = ? and course_id = ? limit 1";
 
         RowMapper<Registration>registrationRowMapper=(rs,index)->{
             Registration registration=new Registration();

@@ -15,10 +15,9 @@ public class RegistrationService {
     }
 
     public void register(Student student, Course course) throws RegisteredExceptions {
-        if(registerRepo.checkExist(student,course)){
-            registerRepo.registerStudentToCourse(course,student);
-        }
-        else{
+        if (!registerRepo.checkExist(student, course)) {
+            registerRepo.registerStudentToCourse(course, student);
+        } else {
             throw new RegisteredExceptions("Already Registered");
         }
 

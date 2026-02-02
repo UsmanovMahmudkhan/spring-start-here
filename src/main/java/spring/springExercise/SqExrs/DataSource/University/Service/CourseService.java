@@ -24,8 +24,7 @@ public class CourseService {
     public void publishCourse(Course course) throws AlreadyRegisteredException {
        if(!courseRepo.findByID(course.getId())){
            courseRepo.registerCourse(course);
-       }
-       else {
+       }else {
            log.error("Course is registered already");
            throw new AlreadyRegisteredException("This course is already registered!!!!");
 
