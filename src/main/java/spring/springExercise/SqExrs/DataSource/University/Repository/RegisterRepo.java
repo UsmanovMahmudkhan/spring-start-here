@@ -22,20 +22,12 @@ public class RegisterRepo {
         template.update(query,student.getId(),course.getId());
     }
 
-    public List<Student>getAllStudent(String courseCode){
-        String query="SELECT s.id, s.student_number, s.name, s.email FROM students s INNER JOIN registrations r ON s.id = r.student_id INNER JOIN courses c ON r.course_id = c.id WHERE c.code=?";
-        RowMapper<Student>studentRowMapper=(rs,index)
-        ->{
-            Student s=new Student();
-            s.setId(rs.getBigDecimal("id"));
-            s.setStudent_number(rs.getString("student_number"));
-            s.setName(rs.getString("name"));
-            s.setEmail(rs.getString("email"));
-            return s;
-        };
 
-        return template.query(query,studentRowMapper,courseCode);
+    public boolean checkExist(Student student, Course course) {
+        String query="select 1\n" +
+                "from registrations\n" +
+                "where student_id = ?\n" +
+                "and course_id = ?\n" +
+                "limit 1";
     }
-
-
 }

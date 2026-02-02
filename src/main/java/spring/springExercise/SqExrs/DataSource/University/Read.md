@@ -5,3 +5,6 @@
 	•	POST /registrations
 	•	GET /students/{id}/courses
 	•	GET /courses/{id}/students
+
+
+

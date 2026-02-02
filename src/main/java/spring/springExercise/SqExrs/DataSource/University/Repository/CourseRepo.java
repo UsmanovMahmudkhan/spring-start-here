@@ -4,7 +4,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import spring.springExercise.SqExrs.DataSource.University.Model.Course;
+import spring.springExercise.SqExrs.DataSource.University.Model.Student;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -39,6 +41,47 @@ public class CourseRepo {
 
         return jdbcTemplate.query(query,rowMapper);
     }
+
+    public boolean findByID(BigDecimal id){
+        String query="SELECT * FROM course where id=?";
+        RowMapper<Course>rowMapper=(rs,inx)->
+        {
+            Course c=new Course();
+            c.setId(rs.getBigDecimal("id"));
+            c.setCredit(rs.getInt("credit"));
+            c.setCode(rs.getString("code"));
+            c.setTitle(rs.getString("title"));
+            return c;
+        };
+
+        List<Course>courses=jdbcTemplate.query(query,rowMapper,id);
+        if(courses.isEmpty()){
+            return false;
+        }
+            return true;
+
+    }
+
+    public List<Student>getStudentsForOneCourse(Course course){
+        String query="SELECT s.id, s.student_number, s.name, s.email\n" +
+                "FROM students s\n" +
+                "JOIN registrations r ON r.student_id = s.id\n" +
+                "WHERE r.course_id = 1;=?";
+
+        RowMapper<Student>rowMapper=(rs,index)
+                ->{
+            Student student=new Student();
+            student.setId(rs.getBigDecimal("id"));
+            student.setStudent_number(rs.getString("student_number"));
+            student.setName(rs.getString("name"));
+            student.setEmail(rs.getString("email"));
+            return student;
+        };
+
+        return jdbcTemplate.query(query,rowMapper,course.getId());
+
+    }
+
 
 
 
