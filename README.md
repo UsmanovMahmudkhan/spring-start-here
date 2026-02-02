@@ -19,6 +19,7 @@ graph TB
         I --> O["SpringMVC (REST-only)"]
         I --> P["WebScopes (Request & Session Scopes)"]
         I --> Q["RestServices (REST APIs)"]
+        I --> R["DataSource (Data Persistence)"]
         
         J --> J1["Bean Configuration"]
         J --> J2["Dependency Injection"]
@@ -57,9 +58,14 @@ graph TB
         P_SES --> P_SES1["Session Counter"]
         P_SES --> P_SES2["Username Storage"]
 
+        R --> R1["H2 (In-Memory DB)"]
+        R --> R2["JDBCTemplate"]
+        R --> R3["University (Courses & Students)"]
+
         Q --> Q1["Exceptions (Advice & Handlers)"]
         Q --> Q2["Response Bodies (DTOs & JSON)"]
         Q --> Q3["Status & Headers (Validation)"]
+        Q --> Q4["Wallet Service (WLT)"]
     end
     
     style A fill:#e1f5ff
@@ -67,61 +73,9 @@ graph TB
     style I fill:#e8f5e9
 ```
 
-### Runtime Flow (Example: Payment System)
 
-```mermaid
-sequenceDiagram
-    participant Main
-    participant Context as Spring Context
-    participant Config as Configuration Class
-    participant Service as PaymentService
-    participant Payment as CreditCardPayment
-    
-    Main->>Context: Create AnnotationConfigApplicationContext
-    Context->>Config: Load @Configuration class
-    Config->>Context: Register @Bean methods
-    Context->>Service: Instantiate @Component beans
-    Main->>Context: getBean(PaymentService.class)
-    Context-->>Main: Return PaymentService instance
-    Main->>Payment: Create CreditCardPayment(5000)
-    Main->>Service: pay(creditCardPayment)
-    Service->>Service: Process payment
-    Service-->>Main: Payment completed
-```
 
-### Data Model (Example: Comment System)
 
-```mermaid
-classDiagram
-    class Comment {
-        +String text
-        +String name
-        +getText()
-        +setText()
-        +getName()
-        +setName()
-    }
-    
-    class CommentService {
-        -DBCommentSave dbCommentSave
-        -CommentNotification notification
-        +publish(Comment)
-    }
-    
-    class DBCommentSave {
-        +comment_save(Comment)
-    }
-    
-    class CommentNotification {
-        +sendNotification(Comment)
-    }
-    
-    CommentService --> Comment
-    CommentService --> DBCommentSave
-    CommentService --> CommentNotification
-```
-
----
 
 ## Repository Structure
 
@@ -247,16 +201,27 @@ springExercise/
 │   │   │       │   │       ├── DTO/
 │   │   │       │   │       └── RestController/
 
-│   │   │       │   └── StatusAndHeaders/          # Status codes and Response Headers
-│   │   │       │       ├── CustomStatus/          # Custom HTTP status
-│   │   │       │       ├── User/                  # User management
-│   │   │       │       └── ValidationOutcome/     # Validation examples
+│   │   │       │   ├── StatusAndHeaders/          # Status codes and Response Headers
+│   │   │       │   │   ├── CustomStatus/          # Custom HTTP status
+│   │   │       │   │   ├── User/                  # User management
+│   │   │       │   │   └── ValidationOutcome/     # Validation examples
+│   │   │       │   └── WLT/                       # Wallet Service
+│   │   │       │       ├── Controller/            # Payment & Wallet Controllers
+│   │   │       │       ├── DTO/                   # Data Transfer Objects
+│   │   │       │       ├── Service/               # Business Logic
+│   │   │       │       └── Advise/                # Exception Handling
 │   │   │       ├── ConsumingRestEndoints/         # Consuming REST APIs
-│   │   │       │   ├── OpenFeign/                 # OpenFeign examples
-│   │   │       │   │   └── ProductServiceCall/    # Inter-service communication
-│   │   │       │   │       ├── ProductService/    # Product microservice
-│   │   │       │   │       └── UserService/       # User microservice
-│   │   │       │   └── Webclient/                 # WebClient examples
+│   │   │       │   └── OpenFeign/                 # OpenFeign examples
+│   │   │       │       └── ProductServiceCall/    # Inter-service communication
+│   │   │       │           ├── ProductService/    # Product microservice
+│   │   │       │           └── UserService/       # User microservice
+│   │   │       ├── DataSource/                    # Data Persistence
+│   │   │       │   ├── H2/                        # H2 Database examples
+│   │   │       │   ├── JDBCTemplate/              # JDBC Template examples
+│   │   │       │   └── University/                # University System
+│   │   │       │       ├── Controller/            # Course, Registration, Student Controllers
+│   │   │       │       ├── Service/               # Services
+│   │   │       │       └── Repository/            # Repositories
 │   │   └── resources/
 │   │       ├── templates/                          # Thymeleaf templates
 │   │       │   ├── Math.html                       # Calculator template
